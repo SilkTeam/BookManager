@@ -12,12 +12,14 @@
 ### 进度分析
 <table>
     <th>
-        <td>分析</td>
+        <td>功能</td>
+        <td>负责人</td>
         <td>进度</td>
     </th>
     <tr>
         <td>1</td>
-        <td>数据库设计</td>
+        <td>数据库的设计</td>
+        <td>Skilemon</td>
         <td>100%</td>
     </tr>
     <tr>
