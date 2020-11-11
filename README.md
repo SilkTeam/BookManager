@@ -35,7 +35,7 @@
     <tr>
         <td>3</td>
         <td>读者注册借阅卡</td>
-        <td><a href="https://github.com/Skilemon">Skilemon</a>, <a href="https://github.com/huangjiguan">huangjiguan</a></td>
+        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
         <td></td>
         <td>5%+0%</td>
     </tr>
@@ -73,5 +73,12 @@
         <td><a href="https://github.com/405512252">405512252</a></td>
         <td></td>
         <td>32%</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>项目文档与演示文稿</td>
+        <td><a href="https://github.com/huangjiguan">huangjiguan</a></td>
+        <td></td>
+        <td>waiting...</td>
     </tr>
 </table>
