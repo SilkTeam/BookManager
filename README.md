@@ -8,6 +8,3 @@
 6、管理员可以管理学生信息<br />
 7、学生可以归还图书，同时增加存量<br />
 8、管理员可以增加管理员账号<br />
-Admin：ID,Uid,Upassword<br />
-Student:ID,Name,Age,Sex,Grade,Class<br />
-Books:ID,Name,Type,Borrowing,Number<br />
