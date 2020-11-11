@@ -8,16 +8,16 @@ Create Table Sigin
 (
 	ID int primary key identity(1,1),
 	Username varchar(20) not null,
-	[Password] varchar(32) not null,-- ¶ÁÕßËæ»ú ¹ÜÀíÔ±ĞèÒªmd5¼ÓÃÜ ²âÊÔºöÂÔ
-	[Identity] int not null,-- 0¶ÁÕß 1Í¼Êé¹ÜÀíÔ± 2³¬¼¶¹ÜÀíÔ±
+	[Password] varchar(32) not null,-- è¯»è€…éšæœº ç®¡ç†å‘˜éœ€è¦md5åŠ å¯† æµ‹è¯•å¿½ç•¥
+	[Identity] int not null,-- 0è¯»è€… 1å›¾ä¹¦ç®¡ç†å‘˜ 2è¶…çº§ç®¡ç†å‘˜
 )
 Go
 
 Create Table [User]
 (
 	ID int primary key identity(1,1),
-	CardID varchar(32) not null,-- ¶ÁÕß¿¨ºÅ md5ÓÃ»§Ãû ²âÊÔºöÂÔ
-	[Name] varchar(20) not null,-- ĞÕÃû
+	CardID varchar(32) not null,-- è¯»è€…å¡å· md5ç”¨æˆ·å æµ‹è¯•å¿½ç•¥
+	[Name] varchar(20) not null,-- å§“å
 	Sex int not null,
 	Age int,
 	[Uid] int foreign key references Sigin(ID),
