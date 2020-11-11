@@ -37,41 +37,41 @@
         <td>读者注册借阅卡</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a>, <a href="https://github.com/huangjiguan">huangjiguan</a></td>
         <td></td>
-        <td>5%</td>
+        <td>5%+0%</td>
     </tr>
     <tr>
         <td>4</td>
         <td>管理员后台登录</td>
         <td><a href="https://github.com/Stefan-dog">Stefan-dog</a></td>
         <td></td>
-        <td>waiting...</td>
+        <td>1%</td>
     </tr>
     <tr>
         <td>5</td>
         <td>图书分类与管理</td>
-        <td><a href="https://github.com/15078709136">15078709136</a>, <a href="https://github.com/Skilemon">Skilemon</a></td>
+        <td><a href="https://github.com/15078709136">15078709136</a></td>
         <td></td>
-        <td>waiting...</td>
+        <td>50%</td>
     </tr>
     <tr>
         <td>6</td>
         <td>图书借还模块</td>
         <td><a href="https://github.com/tengjinkai">tengjinkai</a></td>
         <td></td>
-        <td>waiting...</td>
+        <td>20%</td>
     </tr>
     <tr>
         <td>7</td>
         <td>读者信息管理</td>
         <td><a href="https://github.com/ififefef">ififefef</a></td>
         <td></td>
-        <td>waiting...</td>
+        <td>90%</td>
     </tr>
     <tr>
         <td>8</td>
         <td>新增管理员账号</td>
         <td><a href="https://github.com/405512252">405512252</a></td>
         <td></td>
-        <td>waiting...</td>
+        <td>32%</td>
     </tr>
 </table>
