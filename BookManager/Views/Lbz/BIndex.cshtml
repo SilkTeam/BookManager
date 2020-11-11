@@ -1,0 +1,87 @@
+﻿@model IEnumerable<BookManager.Models.Book>
+@Model <datalist> </datalist>
+
+@{
+    ViewBag.Title = "BIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            分类
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntryTime)
+        </th>
+        <th> <a href="/Lbz/BAdd"> 添加 </a></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category1.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntryTime)
+            </td>
+            <td>
+                <a href="#" onclick="artdel(@item.ID)">删除</a>
+                <a href="/Lbz/Eidt?ID=@item.ID" >修改</a>
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts{
+
+
+ 
+<script>
+    function artdel(ID) {
+        layer.confirm('确认删除商品吗？', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+                window.location = "/lbz/Bdelete?ID="+ ID
+        }, function () {
+        });
+    }
+
+
+    
+
+</script>
+    
+}
