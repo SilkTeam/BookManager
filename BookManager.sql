@@ -4,6 +4,7 @@ Go
 Use BookManager
 Go
 
+--登录信息表
 Create Table Sigin
 (
 	ID int primary key identity(1,1),
@@ -13,6 +14,7 @@ Create Table Sigin
 )
 Go
 
+--用户信息表
 Create Table [User]
 (
 	ID int primary key identity(1,1),
@@ -24,6 +26,7 @@ Create Table [User]
 )
 Go
 
+--分类信息表
 Create Table Category
 (
 	ID int primary key identity(1,1),
@@ -31,6 +34,7 @@ Create Table Category
 )
 Go
 
+--图书信息表
 Create Table Book
 (
 	ID int primary key identity(1,1),
@@ -43,6 +47,7 @@ Create Table Book
 )
 Go
 
+--借还信息表
 Create Table Borrow
 (
 	ID int primary key identity(1,1),
@@ -54,6 +59,7 @@ Create Table Borrow
 )
 Go
 
+--日志信息表
 Create Table [Log]
 (
 	ID int primary key identity(1,1),
