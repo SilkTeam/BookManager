@@ -74,4 +74,6 @@ Insert Into Sigin Values('admin','123456','2')
 Insert Into Sigin Values('root','123456','1')
 Insert Into [User] Values('admin','0','18','1','2020/02/02')
 Insert Into [User] Values('root','0','18','2','2020/02/02')
+Insert Into Category Values('测试分类')
+Insert Into Book Values('书名','介绍','1','5','作者','2020/11/11')
 Go

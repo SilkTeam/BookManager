@@ -10,7 +10,7 @@
 7、学生可以归还图书，同时增加存量<br />
 8、管理员可以增加管理员账号<br />
 ### 进度分析
-#### 每天23:59更新进度信息
+#### 每天凌晨更新进度信息
 <table>
     <th>
         <td>功能</td>
@@ -35,7 +35,7 @@
     <tr>
         <td>3</td>
         <td>读者注册借阅卡</td>
-        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
+        <td><a href="https://github.com/Skilemon">Skilemon</a>, <a href="https://github.com/huangjiguan">huangjiguan</a></td>
         <td></td>
         <td>5%+0%</td>
     </tr>
@@ -76,8 +76,15 @@
     </tr>
     <tr>
         <td>9</td>
+        <td>项目分支整合</td>
+        <td></td>
+        <td></td>
+        <td>waiting...</td>
+    </tr>
+    <tr>
+        <td>10</td>
         <td>项目文档与演示文稿</td>
-        <td><a href="https://github.com/huangjiguan">huangjiguan</a></td>
+        <td></td>
         <td></td>
         <td>waiting...</td>
     </tr>
