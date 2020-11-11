@@ -68,14 +68,14 @@
     </tr>
     <tr>
         <td>7-1</td>
-        <td>数据操作异常(Fix))</td>
+        <td>数据操作异常修复</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a></td>
         <td></td>
         <td>65%</td>
     </tr>
     <tr>
         <td>7-2</td>
-        <td>前端美化和Jquery优化(UI)</td>
+        <td>前端美化和Jquery优化</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a></td>
         <td></td>
         <td>40%</td>
