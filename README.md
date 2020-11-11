@@ -41,7 +41,7 @@
     <tr>
         <td>4</td>
         <td>管理员后台登录</td>
-        <td></td>
+        <td>Stefan-dog</td>
         <td></td>
         <td>waiting...</td>
     </tr>
@@ -55,7 +55,7 @@
     <tr>
         <td>6</td>
         <td>图书借还模块</td>
-        <td></td>
+        <td>tengjinkai</td>
         <td></td>
         <td>waiting...</td>
     </tr>
@@ -69,7 +69,7 @@
     <tr>
         <td>8</td>
         <td>新增管理员账号</td>
-        <td></td>
+        <td>405512252</td>
         <td></td>
         <td>waiting...</td>
     </tr>
