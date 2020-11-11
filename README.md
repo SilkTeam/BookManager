@@ -9,14 +9,13 @@
 6、管理员可以管理学生信息<br />
 7、学生可以归还图书，同时增加存量<br />
 8、管理员可以增加管理员账号<br />
-### 进度分析
-#### 每天凌晨更新进度信息
+### 项目进度
 <table>
     <th>
         <td>功能</td>
         <td>负责人</td>
         <td>测试</td>
-        <td>进度</td>
+        <td>完成度</td>
     </th>
     <tr>
         <td>1</td>
@@ -64,8 +63,15 @@
         <td>7</td>
         <td>读者信息管理</td>
         <td><a href="https://github.com/ififefef">ififefef</a></td>
+        <td>✔</td>
+        <td>100%</td>
+    </tr>
+    <tr>
+        <td>7-1</td>
+        <td>数据操作异常修复</td>
+        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
         <td></td>
-        <td>90%</td>
+        <td>waiting...</td>
     </tr>
     <tr>
         <td>8</td>
