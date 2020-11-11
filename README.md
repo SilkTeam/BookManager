@@ -34,7 +34,7 @@
     <tr>
         <td>3</td>
         <td>读者注册借阅卡</td>
-        <td>Skilemon</td>
+        <td>Skilemon, huangjiguan</td>
         <td></td>
         <td>5%</td>
     </tr>
@@ -48,7 +48,7 @@
     <tr>
         <td>5</td>
         <td>图书分类与管理</td>
-        <td></td>
+        <td>15078709136</td>
         <td></td>
         <td>waiting...</td>
     </tr>
