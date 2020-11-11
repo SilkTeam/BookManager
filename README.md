@@ -48,7 +48,7 @@
     <tr>
         <td>5</td>
         <td>图书分类与管理</td>
-        <td><a href="https://github.com/15078709136">15078709136</a></td>
+        <td><a href="https://github.com/15078709136">15078709136</a>, <a href="https://github.com/Skilemon">Skilemon</a></td>
         <td></td>
         <td>waiting...</td>
     </tr>
