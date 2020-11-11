@@ -20,4 +20,39 @@
         <td>数据库设计</td>
         <td>100%</td>
     </tr>
+    <tr>
+        <td>2</td>
+        <td>读者注册借阅卡</td>
+        <td>waiting...</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>管理员后台登录</td>
+        <td>waiting...</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>后台分类、图书管理</td>
+        <td>waiting...</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>图书借阅模块</td>
+        <td>waiting...</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>读者信息管理</td>
+        <td>waiting...</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>还书模块</td>
+        <td>waiting...</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>管理员账号添加</td>
+        <td>waiting...</td>
+    </tr>
 </table>
