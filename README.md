@@ -68,10 +68,17 @@
     </tr>
     <tr>
         <td>7-1</td>
-        <td>数据操作异常修复</td>
+        <td>数据操作异常(Fix))</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a></td>
         <td></td>
-        <td>waiting...</td>
+        <td>65%</td>
+    </tr>
+    <tr>
+        <td>7-2</td>
+        <td>前端美化和Jquery优化(UI)</td>
+        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
+        <td></td>
+        <td>40%</td>
     </tr>
     <tr>
         <td>8</td>
@@ -83,7 +90,7 @@
     <tr>
         <td>9</td>
         <td>项目分支整合</td>
-        <td></td>
+        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
         <td></td>
         <td>waiting...</td>
     </tr>
