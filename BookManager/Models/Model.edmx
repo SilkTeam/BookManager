@@ -25,7 +25,8 @@
           <Property Name="BookID" Type="int" />
           <Property Name="Use" Type="bit" Nullable="false" />
           <Property Name="CardID" Type="int" />
-          <Property Name="EntryTime" Type="datetime" />
+          <Property Name="GetTime" Type="datetime" />
+          <Property Name="LoseTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -178,7 +179,8 @@
           <Property Name="BookID" Type="Int32" />
           <Property Name="Use" Type="Boolean" Nullable="false" />
           <Property Name="CardID" Type="Int32" />
-          <Property Name="EntryTime" Type="DateTime" Precision="3" />
+          <Property Name="GetTime" Type="DateTime" Precision="3" />
+          <Property Name="LoseTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Book" Relationship="Self.FK__Borrow__BookID__2E1BDC42" FromRole="Borrow" ToRole="Book" />
           <NavigationProperty Name="User" Relationship="Self.FK__Borrow__CardID__2F10007B" FromRole="Borrow" ToRole="User" />
         </EntityType>
@@ -338,7 +340,8 @@
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
                 <ScalarProperty Name="Use" ColumnName="Use" />
                 <ScalarProperty Name="CardID" ColumnName="CardID" />
-                <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+                <ScalarProperty Name="GetTime" ColumnName="GetTime" />
+                <ScalarProperty Name="LoseTime" ColumnName="LoseTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

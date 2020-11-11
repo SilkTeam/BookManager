@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1f57237566804acaaf55a8eabe4b5a24" Name="Diagram1">
-        <EntityTypeShape EntityType="BookManagerModel.Book" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+      <Diagram DiagramId="0ce0815935f448829214065a6c839280" Name="Diagram1">
+        <EntityTypeShape EntityType="BookManagerModel.Book" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BookManagerModel.Borrow" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookManagerModel.Category" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookManagerModel.Log" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookManagerModel.Sigin" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookManagerModel.User" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookManagerModel.Category" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookManagerModel.Log" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookManagerModel.Sigin" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookManagerModel.User" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
         <AssociationConnector Association="BookManagerModel.FK__Book__Category__2B3F6F97" ManuallyRouted="false" />
         <AssociationConnector Association="BookManagerModel.FK__Borrow__BookID__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="BookManagerModel.FK__Borrow__CardID__2F10007B" ManuallyRouted="false" />
