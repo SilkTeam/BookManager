@@ -49,7 +49,8 @@ Create Table Borrow
 	BookID int foreign key references Book(ID),
 	[Use] bit not null,
 	CardID int foreign key references [User](ID),
-	EntryTime datetime,
+	GetTime datetime,
+	LoseTime datetime,
 )
 Go
 
