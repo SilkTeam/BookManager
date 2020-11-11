@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="/Dcj/UserAdd" method="post">
+    姓名：<input type="text" name="Name" value="" /><br />
+    性别：<input type="text" name="Age" value="" /><br />
+    年龄：
+    <select name="Sex">
+        <option>男</option>
+        <option>女</option>
+    </select><br />
+    Uid：<input type="text" name="Uid" value="" /><br />
+    时间：<input type="date" EntryTime="name" value="" /><br />
+    <input type="submit" value="添加学生信息" />
+</form>
