@@ -20,56 +20,56 @@
     <tr>
         <td>1</td>
         <td>数据库设计</td>
-        <td>Skilemon</td>
+        <td>[Skilemon](https://github.com/Skilemon)</td>
         <td>✔</td>
         <td>100%</td>
     </tr>
     <tr>
         <td>2</td>
         <td>项目初始化</td>
-        <td>Skilemon</td>
+        <td>[Skilemon](https://github.com/Skilemon)</td>
         <td>✔</td>
         <td>100%</td>
     </tr>
     <tr>
         <td>3</td>
         <td>读者注册借阅卡</td>
-        <td>Skilemon, huangjiguan</td>
+        <td>[Skilemon](https://github.com/Skilemon), [huangjiguan](https://github.com/huangjiguan)</td>
         <td></td>
         <td>5%</td>
     </tr>
     <tr>
         <td>4</td>
         <td>管理员后台登录</td>
-        <td>Stefan-dog</td>
+        <td>[Stefan-dog](https://github.com/Stefan-dog)</td>
         <td></td>
         <td>waiting...</td>
     </tr>
     <tr>
         <td>5</td>
         <td>图书分类与管理</td>
-        <td>15078709136</td>
+        <td>[15078709136](https://github.com/15078709136)</td>
         <td></td>
         <td>waiting...</td>
     </tr>
     <tr>
         <td>6</td>
         <td>图书借还模块</td>
-        <td>tengjinkai</td>
+        <td>[tengjinkai](https://github.com/tengjinkai)</td>
         <td></td>
         <td>waiting...</td>
     </tr>
     <tr>
         <td>7</td>
         <td>读者信息管理</td>
-        <td>ififefef</td>
+        <td>[ififefef](https://github.com/ififefef)</td>
         <td></td>
         <td>waiting...</td>
     </tr>
     <tr>
         <td>8</td>
         <td>新增管理员账号</td>
-        <td>405512252</td>
+        <td>[405512252](https://github.com/405512252)</td>
         <td></td>
         <td>waiting...</td>
     </tr>
