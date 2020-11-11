@@ -16,7 +16,6 @@ Go
 Create Table [User]
 (
 	ID int primary key identity(1,1),
-	CardID varchar(32) not null,-- 读者卡号 md5用户名 测试忽略
 	[Name] varchar(20) not null,-- 姓名
 	Sex int not null,
 	Age int,
@@ -48,7 +47,7 @@ Create Table Borrow
 (
 	ID int primary key identity(1,1),
 	BookID int foreign key references Book(ID),
-	UseFun bit not null,
+	[Use] bit not null,
 	CardID int foreign key references [User](ID),
 	EntryTime datetime,
 )
@@ -57,13 +56,15 @@ Go
 Create Table [Log]
 (
 	ID int primary key identity(1,1),
+	[Uid] int foreign key references [User](ID),
 	Info text not null,
 	EntryTime datetime,
 )
 Go
 
+-- 插入超级管理员和图书管理员数据
 Insert Into Sigin Values('admin','123456','2')
 Insert Into Sigin Values('root','123456','1')
-Insert Into [User] Values('1001','admin','0','18','1','2020/02/02')
-Insert Into [User] Values('1002','root','0','18','2','2020/02/02')
+Insert Into [User] Values('admin','0','18','1','2020/02/02')
+Insert Into [User] Values('root','0','18','2','2020/02/02')
 Go

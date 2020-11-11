@@ -21,22 +21,22 @@
         <td>1</td>
         <td>数据库设计</td>
         <td>Skilemon</td>
-        <td>Skilemon √</td>
+        <td>✔</td>
         <td>100%</td>
     </tr>
     <tr>
         <td>2</td>
         <td>项目初始化</td>
         <td>Skilemon</td>
-        <td></td>
-        <td>65%</td>
+        <td>✔</td>
+        <td>100%</td>
     </tr>
     <tr>
         <td>3</td>
         <td>读者注册借阅卡</td>
+        <td>Skilemon</td>
         <td></td>
-        <td></td>
-        <td>waiting...</td>
+        <td>5%</td>
     </tr>
     <tr>
         <td>4</td>
@@ -47,7 +47,7 @@
     </tr>
     <tr>
         <td>5</td>
-        <td>后台分类、图书管理</td>
+        <td>图书分类与管理</td>
         <td></td>
         <td></td>
         <td>waiting...</td>
@@ -68,7 +68,7 @@
     </tr>
     <tr>
         <td>8</td>
-        <td>管理员账号添加</td>
+        <td>新增管理员账号</td>
         <td></td>
         <td></td>
         <td>waiting...</td>
