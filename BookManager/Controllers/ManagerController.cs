@@ -26,23 +26,37 @@ namespace BookManager.Controllers
             return View(EF.User.ToList());
         }
 
+        [HttpGet]
         public ActionResult Add()
         {
             return View();
         }
 
-        public ActionResult AddSave(Sigin sigin, User user)
+        [HttpPost]
+        public ActionResult Add(Sigin sigin, User user)
         {
-            EF.User.Add(user);
-            EF.SaveChanges();
-            return Redirect("/default/index");
+            if (EF.Sigin.FirstOrDefault(x=>x.Username ==  user.Name) != null)
+            {
+                return Content("当前用户名已被占用！");
+            }
+            else
+            {
+                sigin.Username = user.Name;
+                sigin.Password = "123456";
+                sigin.Identity = 0;
+                EF.Sigin.Add(sigin);
+                EF.SaveChanges();
+                user.Uid = EF.Sigin.FirstOrDefault(x => x.Username == user.Name).ID;
+                EF.User.Add(user);
+                EF.SaveChanges();
+                return Content("success");
+            }
         }
 
         [HttpGet]
-        public ActionResult Edit()
+        public ActionResult Edit(int ID)
         {
-            var deid = Convert.ToInt32(Request["deid"]);
-            var mod = EF.User.FirstOrDefault(x => x.ID == deid);
+            var mod = EF.User.FirstOrDefault(x => x.ID == ID);
             return View(mod);
         }
 
@@ -50,24 +64,33 @@ namespace BookManager.Controllers
         public ActionResult Edit(User user)
         {
             var mod = EF.User.FirstOrDefault(x => x.ID == user.ID);
-            mod = user;
-            //mod.Name = user.Name;
-            //mod.Sex = user.Sex;
-            //mod.Age = user.Age;
-            //mod.Uid = user.Uid;
-            //mod.EntryTime = user.EntryTime;
-            EF.SaveChanges();
-            return Redirect("/default/index");
+            if (mod != null)
+            {
+                mod = user;
+                EF.SaveChanges();
+                return Content("success");
+            }
+            else
+            {
+                return Content("非法访问！");// 用户不存在
+            }
         }
 
         public ActionResult Delete(int ID)
         {
             var user = EF.User.FirstOrDefault(x => x.ID == ID);
             var sigin = EF.Sigin.FirstOrDefault(x => x.ID == user.Uid);
-            EF.User.Remove(user);
-            EF.Sigin.Remove(sigin);
-            EF.SaveChanges();
-            return Content("success");
+            if (user != null && sigin != null)
+            {
+                EF.User.Remove(user);
+                EF.Sigin.Remove(sigin);
+                EF.SaveChanges();
+                return Content("success");
+            }
+            else
+            {
+                return Content("用户不存在");
+            }
         }
     }
 }

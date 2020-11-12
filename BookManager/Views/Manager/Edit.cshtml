@@ -4,67 +4,54 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Edit</h2>
-
-@using (Html.BeginForm("editsave","default"))
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>User</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Uid, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Uid, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Uid, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EntryTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EntryTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EntryTime, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+<h2>更新借阅卡</h2>
+<form action="/Manager/Add" method="post">
+    <div class="form-group">
+        <label>姓名:</label>
+        <input type="text" disabled class="form-control" id="Name" name="Name" value="@Model.Name">
     </div>
+    <div class="form-group">
+        <label>性别:</label>
+        <select class="form-control" id="Sex" name="Sex" tabindex="@Model.Sex">
+            <option value="0">女</option>
+            <option value="1">男</option>
+            <option value="2">保密</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>年龄:</label>
+        <input type="number" class="form-control" id="Age" name="Age" value="@Model.Age">
+    </div>
+    <div class="form-group">
+        <label>联系方式:</label>
+        <input type="tel" class="form-control" id="Phone" name="Phone" value="@Model.Phone">
+    </div>
+    <button id="submit" class="btn btn-primary">更新信息</button>
+</form>
+@section scripts{
+    <script>
+        $("#submit").click(function () {
+            layer.load(2, { shade: false });
+            var data = {
+                Name: $("#Name").val(),
+                Age: $("#Age").val(),
+                Sex: $("#Sex").val(),
+                Phone: $("#Phone").val(),
+            };
+            $.post("/Manager/Edit", data, function (res) {
+                setTimeout(function () {
+                    layer.closeAll('loading');
+                }, 1000);
+                if (res == "success") {
+                    layer.alert("更新成功！");
+                    setTimeout(function () {
+                        window.location.href = "/Manager/Index";
+                    }, 1500);
+                } else {
+                    layer.alert(res);
+                };
+            });
+            return false;
+        });
+    </script>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

@@ -36,14 +36,21 @@
         <td>读者注册借阅卡</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a>, <a href="https://github.com/huangjiguan">huangjiguan</a></td>
         <td></td>
-        <td>5%+0%</td>
+        <td>5%+25%</td>
     </tr>
     <tr>
         <td>4</td>
         <td>管理员后台登录</td>
         <td><a href="https://github.com/Stefan-dog">Stefan-dog</a></td>
+        <td>✔</td>
+        <td>100%</td>
+    </tr>
+    <tr>
+        <td>4-1</td>
+        <td>前端美化和Jquery优化</td>
         <td></td>
-        <td>1%</td>
+        <td></td>
+        <td>waiting...</td>
     </tr>
     <tr>
         <td>5</td>

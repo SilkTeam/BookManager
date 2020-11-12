@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Manager.cshtml";
-    var list = ViewBag.list as List<BookManager.Models.User>;
 }
 <h2>用户管理</h2>
 <table class="table table-hover">
@@ -12,12 +11,13 @@
             <th>姓名</th>
             <th>性别</th>
             <th>年龄</th>
+            <th>联系方式</th>
             <th>开卡时间</th>
             <th>操作</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in list)
+        @foreach (var item in Model)
         {
             <tr>
                 <td>@item.ID</td>
@@ -36,6 +36,7 @@
                         @:保密
                     }
                 </td>
+                <td>@item.Phone</td>
                 <td>@item.Age</td>
                 <td>@item.EntryTime</td>
                 <td>
@@ -82,11 +83,11 @@
                     <a class="page-link" href="/Manager/Index?page=@(ViewBag.pageCount)">尾页</a>
                 </li>
             }
+            <div class="col-3 btn-group">
+                <input type="number" id="PageJ" class="form-control col-6" placeholder="请输入页数">
+                <a href="#junpPage" id="junpPage" class="btn btn-info col-4" role="button">确定</a>
+            </div>
         </ul>
-        <div class="col-3 btn-group">
-            <input type="number" id="PageJ" class="form-control col-6" placeholder="请输入页数">
-            <a href="#junpPage" id="junpPage" class="btn btn-info col-4" role="button">确定</a>
-        </div>
     </nav>
 </div>
 @section scripts{
