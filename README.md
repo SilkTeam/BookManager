@@ -36,7 +36,14 @@
         <td>读者注册借阅卡</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a>, <a href="https://github.com/huangjiguan">huangjiguan</a></td>
         <td>✔</td>
-        <td>5%+95%</td>
+        <td>45%+55%</td>
+    </tr>
+    <tr>
+        <td>3-1</td>
+        <td>前端美化和Jquery优化</td>
+        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
+        <td>✔</td>
+        <td>100%</td>
     </tr>
     <tr>
         <td>4</td>
@@ -57,14 +64,28 @@
         <td>图书分类与管理</td>
         <td><a href="https://github.com/15078709136">15078709136</a></td>
         <td></td>
-        <td>50%</td>
+        <td>90%</td>
+    </tr>
+    <tr>
+        <td>5-1</td>
+        <td>前端美化和Jquery优化</td>
+        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
+        <td></td>
+        <td>0%</td>
     </tr>
     <tr>
         <td>6</td>
         <td>图书借还模块</td>
         <td><a href="https://github.com/tengjinkai">tengjinkai</a></td>
         <td></td>
-        <td>20%</td>
+        <td>78%</td>
+    </tr>
+    <tr>
+        <td>6-1</td>
+        <td>前端美化和Jquery优化</td>
+        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
+        <td></td>
+        <td>0%</td>
     </tr>
     <tr>
         <td>7</td>
@@ -95,10 +116,17 @@
         <td>100%</td>
     </tr>
     <tr>
+        <td>8-1</td>
+        <td>前端美化和Jquery优化</td>
+        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
+        <td>✔</td>
+        <td>100%</td>
+    </tr>
+    <tr>
         <td>9</td>
         <td>项目文档与演示文稿</td>
+        <td><a href="https://github.com/huangjiguan">huangjiguan</a></td>
         <td></td>
-        <td></td>
-        <td>waiting...</td>
+        <td>0%</td>
     </tr>
 </table>
