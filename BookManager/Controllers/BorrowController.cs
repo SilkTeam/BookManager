@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -48,10 +49,27 @@ namespace BookManager.Controllers
         {
             var id = Convert.ToInt32(Request["id"]);
             var mod = EF.Book.FirstOrDefault(x=>x.ID==id);
-            var Quantity = mod.Number;
-            if (Quantity < 0)
-                return Content("很抱歉，目前没有此书");
-            mod.Number = Quantity - 1;
+            return View(mod);
+        }
+        public ActionResult Bowing(Models.Book book)
+        {
+            var uname = Request["uname"];
+            if (uname == null)
+                return Content("读者姓名不能为空");
+            var mod = EF.User.FirstOrDefault(x=>x.Name==uname);
+            if (mod == null)
+                return Content("没有该读者");
+            var bookmod = EF.Book.FirstOrDefault(x=>x.ID==book.ID);
+            var Number = bookmod.Number;
+            if (Number == 0)
+                return Content("目前没有该书");
+            bookmod.Number = Number - 1;
+            var Bmod = new Models.Borrow();
+            Bmod.Use = true;
+            Bmod.CardID = mod.ID;
+            Bmod.GetTime= DateTime.Now;
+            EF.Book.Add(bookmod);
+            EF.Borrow.Add(Bmod);
             EF.SaveChanges();
             return Content("借书成功");
         }
