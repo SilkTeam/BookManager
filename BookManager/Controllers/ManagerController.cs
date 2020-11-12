@@ -26,6 +26,9 @@ namespace BookManager.Controllers
         [AllowAnonymous]
         public ActionResult Sigin()
         {
+            if (Session["Identity"] != null)
+                return Redirect("/Manager/Index");
+
             return View();
         }
 
