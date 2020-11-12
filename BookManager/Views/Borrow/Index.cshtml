@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var page = Convert.ToInt32(ViewBag.page);
     var pageCount = Convert.ToInt32(ViewBag.pageCount);
+    var classify = ViewBag.ify as List<BookManager.Models.Category>;
 }
 
 <h2>Index</h2>
@@ -13,84 +14,115 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Author)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EntryTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category1.Name)
-        </th>
-        <th></th>
-    </tr>
+         <tr>
+             <th>
+                 编号
+             </th>
+             <th>
+                 名称
+             </th>
+                  <th>              
+                      <select id="myselect">
+                          <option>类别</option>
+              @foreach (var item in classify)
+              {
+                  <option value="@item.ID">@item.Name</option>
+              }
+               </select>
+                  </th>
+             <th>
+                 描述
+             </th>
+             <th>
+                 库存
+             </th>
+             <th>
+                 作者
+             </th>
+             <th>
+                 入库时间
+             </th>
+       
+             <th></th>
+         </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EntryTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category1.Name)
-            </td>
+          @foreach (var item in Model)
+          {
+      <tr>
+          <td id="bid">
+             item.ID
+          </td>
+          <td>
+              @Html.DisplayFor(modelItem => item.Name)
+          </td>
+          <td id="mytd">
+              @foreach (var i in classify)
+              {
+                  @i.Name;
+              }
+              </td>
+          <td>
+              @Html.DisplayFor(modelItem => item.Description)
+          </td>
+          <td>
+              @Html.DisplayFor(modelItem => item.Number)
+          </td>
+          <td>
+              @Html.DisplayFor(modelItem => item.Author)
+          </td>
+          <td>
+              @Html.DisplayFor(modelItem => item.EntryTime)
+          </td>
+      
+          <td>
+              <a href="/Borrow/Borrowing?id=@(item.ID)" id="jieshu">借书</a>
+          </td>
+      </tr>
+          }
+      </table>
+      @if (page == 1)
+      {
+          <a href="/borrow/index?page=@page">首页</a>
+      }
+      else
+      {
+          <a href="/borrow/index?page=@(page-1)">上一页</a>
+      }
+      <a>@page/@pageCount</a>
+      @if (page == pageCount)
+      {
+          <a href="/borrow/index?page=@pageCount">尾页</a>
+      }
+      else
+      {
+          <a href="/borrow/index?page=@(page+1)">下一页</a>
+      }
+      <input type="text" id="Springen" /> 
 
-            <td>
-                <a href="/Borrow/Borrowing?id=@(item.ID)">借书</a>
-            </td>
-        </tr>
-    }
-</table>
-@if (page == 1)
-{
-    <a href="/borrow/index?page=@page">首页</a>
-}
-else
-{
-    <a href="/borrow/index?page=@(page-1)">@(page-1)上一页</a>
-}
-<a>@page/@pageCount</a>
-@if (page == pageCount)
-{
-    <a href="/borrow/index?page=@pageCount">尾页</a>
-}
-else
-{
-    <a href="/borrow/index?page=@(page+1)">下一页</a>
-}
-<input type="text" id="Springen" />
-<script src="~/Scripts/jquery-3.5.1.min.js"></script>
-<script>
-    $("#Springen").change(function () {
-        var page = $('#Springen"').val();
-        window.location = "/borrow/indx?page=" + page;
-    });
-</script>
+
+      <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+      <script>
+          $("#Springen").change(function () {
+              var page = $('#Springen"').val();
+              window.location = "/borrow/indx?page=" +page;
+          });
+
+          //$("#myselect").change(function(){
+          //    var p1 = $(this).children('option:selected').val();
+          //    var p2 = $("#mytd").val;
+          //    $("#mytd").empty(function () {
+          //        if (p1 = p2) 
+
+
+          //    });
+          //});
+          //借书
+          $("#jieshu").click(function () {
+              var data = {
+                  id=$("#bid").val(),
+              }
+              $.post("/Borrow/Borrowing", data, function (res) {
+                  alert(res);
+              });
+          });
+      </script>

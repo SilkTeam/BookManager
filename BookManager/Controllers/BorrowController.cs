@@ -24,21 +24,36 @@ namespace BookManager.Controllers
         //图书查询
         public ActionResult Index(int page=1,  int size=20)
         {
+
+            //分类
+            var classify = EF.Category.ToList();
+            ViewBag.ify = classify;
+            //图书信息
             var Count = EF.Book.Count();
             var pageCount = Count / size;
+            if (page < 0)
+                pageCount = 1;
             if (Count % size != 0)
                 pageCount++;
+            if (page > pageCount)
+                page = pageCount;
             var mod = EF.Book.OrderBy(x=>x.ID).Skip((page-1)*size).Take(size).ToList();
             ViewBag.page = page;
             ViewBag.pageCount = pageCount;
             return View( mod);
+            
         }
         //借书
         public ActionResult Borrowing()
         {
             var id = Convert.ToInt32(Request["id"]);
             var mod = EF.Book.FirstOrDefault(x=>x.ID==id);
-            return View(mod);
+            var Quantity = mod.Number;
+            if (Quantity < 0)
+                return Content("很抱歉，目前没有此书");
+            mod.Number = Quantity - 1;
+            EF.SaveChanges();
+            return Content("借书成功");
         }
         //还书
         public ActionResult Return()
