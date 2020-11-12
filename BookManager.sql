@@ -40,6 +40,7 @@ Create Table Book
 (
 	ID int primary key identity(1,1),
 	[Name] varchar(50) not null,
+	Img varchar(255),
 	[Description] text,
 	Category int foreign key references Category(ID),
 	Number int not null,
@@ -76,5 +77,5 @@ Insert Into Sigin Values('root','123456','1')
 Insert Into [User] Values('admin','0','18','1','17677007700','2020/02/02')
 Insert Into [User] Values('root','0','18','2','18677337733','2020/02/02')
 Insert Into Category Values('测试分类')
-Insert Into Book Values('书名','介绍','1','5','作者','2020/11/11')
+Insert Into Book Values('书名','','介绍','1','5','作者','2020/11/11')
 Go

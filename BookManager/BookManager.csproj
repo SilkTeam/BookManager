@@ -122,9 +122,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BorrowController.cs" />
+    <Compile Include="Controllers\DcjController.cs" />
+    <Compile Include="Controllers\HJGController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LbzController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Filter\AuthAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -185,6 +188,12 @@
     <Content Include="Views\Lbz\Eidt.cshtml" />
     <Content Include="Views\Lbz\Index.cshtml" />
     <Content Include="Views\Shared\_Manager.cshtml" />
+    <Content Include="Views\Dcj\indexS.cshtml" />
+    <Content Include="Views\Dcj\indexU.cshtml" />
+    <Content Include="Views\Dcj\Sigin.cshtml" />
+    <Content Include="Views\Dcj\User.cshtml" />
+    <Content Include="Views\HJG\User.cshtml" />
+    <Content Include="Views\Student\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

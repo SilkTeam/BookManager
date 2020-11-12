@@ -26,8 +26,8 @@ namespace BookManager.Models
         public int Sex { get; set; }
         public Nullable<int> Age { get; set; }
         public Nullable<int> Uid { get; set; }
-        public Nullable<System.DateTime> EntryTime { get; set; }
         public string Phone { get; set; }
+        public Nullable<System.DateTime> EntryTime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Borrow> Borrow { get; set; }
