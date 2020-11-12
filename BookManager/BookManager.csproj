@@ -121,7 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BorrowController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -192,9 +191,6 @@
     <Content Include="Views\Lbz\CAdd.cshtml" />
     <Content Include="Views\Lbz\CEidt.cshtml" />
     <Content Include="Views\Lbz\CIndex.cshtml" />
-    <Content Include="Views\Shared\_Admin.cshtml" />
-    <Content Include="Views\Admin\Add.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

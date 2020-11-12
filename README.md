@@ -35,7 +35,7 @@
         <td>3</td>
         <td>读者注册借阅卡</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a>, <a href="https://github.com/huangjiguan">huangjiguan</a></td>
-        <td></td>
+        <td>✔</td>
         <td>5%+95%</td>
     </tr>
     <tr>
@@ -48,9 +48,9 @@
     <tr>
         <td>4-1</td>
         <td>前端美化和Jquery优化</td>
-        <td></td>
-        <td></td>
-        <td>waiting...</td>
+        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
+        <td>✔</td>
+        <td>100%</td>
     </tr>
     <tr>
         <td>5</td>
@@ -90,19 +90,12 @@
     <tr>
         <td>8</td>
         <td>新增管理员账号</td>
-        <td><a href="https://github.com/405512252">405512252</a></td>
+        <td><a href="https://github.com/Tender-dcj">Tender-dcj</a></td>
         <td>✔</td>
         <td>100%</td>
     </tr>
     <tr>
         <td>9</td>
-        <td>项目分支整合</td>
-        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
-        <td></td>
-        <td>waiting...</td>
-    </tr>
-    <tr>
-        <td>10</td>
         <td>项目文档与演示文稿</td>
         <td></td>
         <td></td>

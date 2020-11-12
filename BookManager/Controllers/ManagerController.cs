@@ -38,6 +38,7 @@ namespace BookManager.Controllers
             if (mod != null)
             {
                 Session["User"] = mod;
+                Session["Identity"] = mod.Identity;
                 return Content("success");
             }
             else
@@ -67,8 +68,10 @@ namespace BookManager.Controllers
             else
             {
                 sigin.Username = user.Name;
-                sigin.Password = "123456";
-                sigin.Identity = 0;
+                //sigin.Password = "123456";
+                if (Convert.ToInt32(Session["Identity"]) == 1)
+                    sigin.Identity = 0;
+
                 EF.Sigin.Add(sigin);
                 EF.SaveChanges();
                 user.Uid = EF.Sigin.FirstOrDefault(x => x.Username == user.Name).ID;
@@ -117,5 +120,11 @@ namespace BookManager.Controllers
                 return Content("用户不存在");
             }
         }
+
+        public ActionResult Logout()
+        {
+            Session["User"] = Session["Identity"] = null;
+            return Content("success");
+;        }
     }
 }
