@@ -19,6 +19,16 @@ namespace BookManager.Controllers
                 return _ef;
             }
         }
+        public ActionResult indexS()
+        {
+            var list= EF.Sigin.ToList();
+            return View(list);
+        }
+        public ActionResult indexU()
+        {
+            var list= EF.User.ToList();
+            return View(list);
+        }
         //添加管理员
         public ActionResult Sigin()
         {
@@ -26,6 +36,7 @@ namespace BookManager.Controllers
         }
         public ActionResult SiginAdd(Models.Sigin sigin)
         {
+            sigin.Identity = 1;
             var pwd2 = Request["pwd"];
             if (sigin.Password == "")
             {
@@ -36,8 +47,8 @@ namespace BookManager.Controllers
                 return Content("两次密码不一致，请重新输入！");
             }
             EF.Sigin.Add(sigin);
-            EF.SaveChanges();            
-            return Content("管理员添加成功！");
+            EF.SaveChanges();
+            return Redirect("/Dcj/indexS");
         }
         //添加学生信息
         public ActionResult User()
@@ -46,9 +57,15 @@ namespace BookManager.Controllers
         }
         public ActionResult UserAdd(Models.User user)
         {
-            EF.User.Add(user);
-            EF.SaveChanges();
-            return Content("学生信息添加成功！");
+            if (user.Name != null)
+            {
+                user.EntryTime = DateTime.Now;
+                user.Uid = 1;
+                EF.User.Add(user);
+                EF.SaveChanges();
+                return Redirect("/Dcj/indexU");
+            }
+            return Content("请输入学生信息。");
         }
     }
 }

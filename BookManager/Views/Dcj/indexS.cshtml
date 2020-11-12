@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BookManager.Models.Sigin>
+
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>超级管理员</h2>
+
+<p>
+    <a href="/Dcj/Sigin">添加管理员</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Identity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Identity)
+        </td>
+        <td>
+            @Html.ActionLink("修改", "修改", new { id=item.ID }) |
+            @Html.ActionLink("删除", "删除", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
