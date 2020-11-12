@@ -39,23 +39,9 @@
         <td>45%+55%</td>
     </tr>
     <tr>
-        <td>3-1</td>
-        <td>前端美化和Jquery优化</td>
-        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
-        <td>✔</td>
-        <td>100%</td>
-    </tr>
-    <tr>
         <td>4</td>
         <td>管理员后台登录</td>
         <td><a href="https://github.com/Stefan-dog">Stefan-dog</a></td>
-        <td>✔</td>
-        <td>100%</td>
-    </tr>
-    <tr>
-        <td>4-1</td>
-        <td>前端美化和Jquery优化</td>
-        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
         <td>✔</td>
         <td>100%</td>
     </tr>
@@ -67,25 +53,11 @@
         <td>90%</td>
     </tr>
     <tr>
-        <td>5-1</td>
-        <td>前端美化和Jquery优化</td>
-        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
-        <td></td>
-        <td>0%</td>
-    </tr>
-    <tr>
         <td>6</td>
         <td>图书借还模块</td>
         <td><a href="https://github.com/tengjinkai">tengjinkai</a></td>
         <td></td>
         <td>78%</td>
-    </tr>
-    <tr>
-        <td>6-1</td>
-        <td>前端美化和Jquery优化</td>
-        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
-        <td></td>
-        <td>0%</td>
     </tr>
     <tr>
         <td>7</td>
@@ -102,13 +74,6 @@
         <td>100%</td>
     </tr>
     <tr>
-        <td>7-2</td>
-        <td>前端美化和Jquery优化</td>
-        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
-        <td>✔</td>
-        <td>100%</td>
-    </tr>
-    <tr>
         <td>8</td>
         <td>新增管理员账号</td>
         <td><a href="https://github.com/Tender-dcj">Tender-dcj</a></td>
@@ -116,14 +81,14 @@
         <td>100%</td>
     </tr>
     <tr>
-        <td>8-1</td>
+        <td>9</td>
         <td>前端美化和Jquery优化</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a></td>
-        <td>✔</td>
-        <td>100%</td>
+        <td></td>
+        <td>67%</td>
     </tr>
     <tr>
-        <td>9</td>
+        <td>10</td>
         <td>项目文档与演示文稿</td>
         <td><a href="https://github.com/huangjiguan">huangjiguan</a></td>
         <td></td>
