@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Returning";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    var book = ViewBag.Book as BookManager.Models.Book;
+    var user = ViewBag.User as BookManager.Models.User;
+    var mod = ViewBag.mod as List<BookManager.Models.Borrow>;
+}
+
+<h2>Returning</h2>
+<table>
+    <tr>
+        <th>编号</th>
+        <th>书名</th>
+        <th>状态</th>
+        <th>借书人姓名</th>
+        <th>借出时间</th>
+        <th>还书时间</th>
+        <th>操作</th>
+    </tr>
+
+    @foreach (var itom in mod)
+    {
+        <tr>
+            <td>@itom.ID</td>
+            <td>@book.Name</td>
+            <td>@itom.Use</td>
+            <td>@user.Name</td>
+            <td>@itom.GetTime</td>
+            <td>@itom.LoseTime</td>
+            <td><a href="/borrow/Returning?id=@itom.ID">还书</a></td>
+        </tr>
+    }
+
+</table>
+
