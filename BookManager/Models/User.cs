@@ -14,11 +14,25 @@ namespace BookManager.Models
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Borrow = new HashSet<Borrow>();
+            this.Log = new HashSet<Log>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
         public int Sex { get; set; }
         public Nullable<int> Age { get; set; }
         public Nullable<int> Uid { get; set; }
         public Nullable<System.DateTime> EntryTime { get; set; }
+        public string Phone { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Borrow> Borrow { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Log> Log { get; set; }
+        public virtual Sigin Sigin { get; set; }
     }
 }

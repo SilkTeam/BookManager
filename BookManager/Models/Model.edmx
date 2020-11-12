@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BookManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BookManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="ID" />
@@ -62,6 +62,7 @@
           <Property Name="Sex" Type="int" Nullable="false" />
           <Property Name="Age" Type="int" />
           <Property Name="Uid" Type="int" />
+          <Property Name="Phone" Type="varchar" MaxLength="11" />
           <Property Name="EntryTime" Type="datetime" />
         </EntityType>
         <Association Name="FK__Book__Category__2B3F6F97">
@@ -152,8 +153,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BookManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -225,6 +225,7 @@
           <NavigationProperty Name="Borrow" Relationship="Self.FK__Borrow__CardID__2F10007B" FromRole="User" ToRole="Borrow" />
           <NavigationProperty Name="Log" Relationship="Self.FK__Log__Uid__31EC6D26" FromRole="User" ToRole="Log" />
           <NavigationProperty Name="Sigin" Relationship="Self.FK__User__Uid__267ABA7A" FromRole="User" ToRole="Sigin" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Book__Category__2B3F6F97">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -376,6 +377,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="BookManagerModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
