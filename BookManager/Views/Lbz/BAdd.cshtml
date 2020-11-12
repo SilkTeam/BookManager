@@ -11,7 +11,7 @@
 
 <h2>BAdd</h2>
 
-<form action="/Lbz/BAdd" method="post">
+<form action="/Lbz/BAdd" method="post" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
@@ -36,12 +36,15 @@
         </div>
 
         <div class="form-group">
-          <p>分类 :<select class="form-control" name="Category" >
-               @foreach (var iten in Category)
-               {
-                <option value="@iten.ID">   @iten.Name </option>  }
+            <p>
+                分类 :<select class="form-control" name="Category">
+                    @foreach (var iten in Category)
+                    {
+                        <option value="@iten.ID">   @iten.Name </option>
+}
 
-               </select>        </p>
+                </select>
+            </p>
             <div class="col-md-10">
 
             </div>
@@ -70,14 +73,20 @@
                 @Html.ValidationMessageFor(model => model.EntryTime, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="提交" class="btn btn-default" />
+            封面
+            <div class="col-md-10">
+                <input type="file" name="Img" value="" /><br />
+                @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="提交" class="btn btn-default" />
+                </div>
             </div>
         </div>
-    </div>
-    
+
 </form>
 <div>
     @Html.ActionLink("Back to List", "Index")

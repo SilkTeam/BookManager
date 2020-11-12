@@ -32,86 +32,48 @@
         <th>
             @Html.DisplayNameFor(model => model.EntryTime)
         </th>
+        <th>
+            封面
+        </th>
         <th> <a href="/Lbz/BAdd"> 添加 </a></th>
         <th> <a href="/Lbz/CIndex"> 添加 </a></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EntryTime)
-            </td>
-            <td>
-                <a href="#" onclick="artdel(@item.ID)">删除</a>
-                <a href="/Lbz/Eidt?ID=@item.ID">修改</a>
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Author)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EntryTime)
+    </td>
+    <td>
+        <img src="@item.Img" width="100" height="100" />
+    </td>
+    <td>
+        <a href="#" onclick="artdel(@item.ID)">删除</a>
+        <a href="/Lbz/Eidt?ID=@item.ID">修改</a>
+    
+    </td>
+</tr>
     }
 
 </table>
 
 
-
-<div class="bd-example">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            @if (ViewBag.page == 1)
-            {
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-disabled="true">首页</a>
-                </li>
-            }
-            else
-            {
-                <li class="page-item">
-                    <a class="page-link" href="/lbz/BIndex?page=1">首页</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="/lbz/BIndex?page=@(ViewBag.page - 1)">上页</a>
-                </li>
-            }
-            <li class="page-item"><a class="page-link" href="/lbz/BIndex?page=@(ViewBag.page)">@(ViewBag.page)</a></li>
-            @if (ViewBag.page == ViewBag.pageCount)
-            {
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-disabled="true">尾页</a>
-                </li>
-            }
-            else
-            {
-                <li class="page-item">
-                    <a class="page-link" href="/lbz/BIndex?page=@(ViewBag.page + 1)">下页</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="/lbz/BIndex?page=@(ViewBag.pageCount)">尾页</a>
-                </li>
-            }
-        </ul>
-        <div class="col-3 btn-group">
-            <input type="number" id="PageJ" class="form-control col-6" placeholder="请输入页数">
-            <a href="#junpPage" id="junpPage" class="btn btn-info col-4" role="button">确定</a>
-        </div>
-
-    </nav>
-</div>
 
 
 @section scripts{
@@ -130,14 +92,7 @@
 
 
 
-        $("#junpPage").click(function () {
-            layer.load(2, { shade: false });
-            setTimeout(function () {
-                window.location.href = "/lbz/BIndex?page=" + $("#PageJ").val();
-            }, 350);
-            return false;
-        });
-
+     
 
 
     </script>

@@ -11,7 +11,8 @@ namespace BookManager.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Book
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,14 +20,20 @@ namespace BookManager.Models
         {
             this.Borrow = new HashSet<Borrow>();
         }
-    
+   
         public int ID { get; set; }
+        [Required(ErrorMessage = "名字不能为空")]
         public string Name { get; set; }
         public string Img { get; set; }
+        [Required(ErrorMessage = "名字不能为空")]
         public string Description { get; set; }
+        [Required(ErrorMessage = "名字不能为空")]
         public Nullable<int> Category { get; set; }
+        [Required(ErrorMessage = "名字不能为空")]
         public int Number { get; set; }
+        [Required(ErrorMessage = "名字不能为空")]
         public string Author { get; set; }
+        [Required(ErrorMessage = "名字不能为空")]
         public Nullable<System.DateTime> EntryTime { get; set; }
     
         public virtual Category Category1 { get; set; }

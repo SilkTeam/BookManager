@@ -9,7 +9,7 @@
 <h2>Eidt</h2>
 <h2>BAdd</h2>
 
-<form action="/Lbz/Eidt" method="post">
+<form action="/Lbz/Eidt" method="post" enctype="multipart/form-data" >
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
@@ -56,7 +56,11 @@
                 @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        封面
+        <div class="col-md-10">
+            <input type="file" name="Img" value="" /><br />
+            @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -84,8 +88,3 @@
 
 
 
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
