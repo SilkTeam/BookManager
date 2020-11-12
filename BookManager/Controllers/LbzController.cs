@@ -338,15 +338,11 @@ namespace BookManager.Controllers
             return Content("借书成功");
         }
         //还书模块
-        public ActionResult Returnlogin()
-        {
-            return View();
-        }
         //查询
         public ActionResult Return()
         {
-                var CardID = Convert.ToInt32(Request["CardID "]);
-                var mod = EF.Borrow.Where(x => x.ID == CardID).Count();
+            var CardID = Convert.ToInt32(Request["CardID"]);
+                var mod = EF.Borrow.Where(x => x.CardID == CardID).Count();
                 if (mod == 0)
                     return Content("目前没有书可还");
                 var bow = EF.Borrow.FirstOrDefault(x => x.ID == CardID);
