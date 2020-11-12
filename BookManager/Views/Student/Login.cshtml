@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+<form action="/Student/Logining" method="post">
+    账号：<input type="text" name="Username" value="" class="form-control" /><br />
+    密码：<input type="password" name="Password" value=""class="form-control"  /><br />
+    <input type="submit" value="登录" />
+</form>

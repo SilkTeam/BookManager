@@ -24,6 +24,10 @@ namespace BookManager.Controllers
 
         public ActionResult Index()
         {
+            if (Session["login-tea"] == null)
+            {
+                return Redirect("/home/login");
+            }
             var list = EF.Book.ToList();
             return View(list);
         }
@@ -39,12 +43,20 @@ namespace BookManager.Controllers
         [HttpGet]
         public ActionResult BAdd()
         {
+            if (Session["login-tea"] == null)
+            {
+                return Redirect("/home/login");
+            }
             return View();
         }
 
         [HttpPost]
         public ActionResult BAdd(Book book)
         {
+            if (Session["login-tea"] == null)
+            {
+                return Redirect("/home/login");
+            }
             EF.Book.Add(book);
             EF.SaveChanges();
             return Redirect("/Home/BIndex");
@@ -69,6 +81,10 @@ namespace BookManager.Controllers
         [HttpGet]
         public ActionResult  Eidt()
         {
+            if (Session["login-tea"] == null)
+            {
+                return Redirect("/home/login");
+            }
             var ID = Convert.ToInt32(Request["ID"]);
             var ido = EF.Book.FirstOrDefault(x => x.ID == ID);
             return View(ido);
