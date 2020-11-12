@@ -21,7 +21,7 @@
             类别：<input type="text" value="@Model.Category" name="Category" id="Category"><br />
             库存： <input type="number" value="@Model.Number" name="Number" id="Number" /><br />
             作者：<input type="text" value="@Model.Author" name="Author" id="Author" /><br />
-            <label>读者信息</label>
+            <label>读者信息</label></br>
             读者姓名：<input type="text" name="uname" id="uname"/>
             <input type="submit" value="借书" />
         </form>
@@ -40,9 +40,9 @@
                 uname: $("#uname").val(),
             }
 
-            $.post("/borrow/bowing", da, function () {
+            $.post("/borrow/bowing", da, function (res) {
                 //
-      
+                alert(res);
             })
         })
     </script>

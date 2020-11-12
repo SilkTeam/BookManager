@@ -56,7 +56,7 @@ namespace BookManager.Controllers
             var uname = Request["uname"];
             if (uname == null)
                 return Content("读者姓名不能为空");
-            var mod = EF.User.FirstOrDefault(x=>x.Name==uname);
+            var mod = EF.User.FirstOrDefault(x => x.Name == uname);
             if (mod == null)
                 return Content("没有该读者");
             var bookmod = EF.Book.FirstOrDefault(x=>x.ID==book.ID);
@@ -65,10 +65,9 @@ namespace BookManager.Controllers
                 return Content("目前没有该书");
             bookmod.Number = Number - 1;
             var Bmod = new Models.Borrow();
+            Bmod.BookID = book.ID;
             Bmod.CardID = mod.ID;
             Bmod.GetTime= DateTime.Now;
-            EF.Book.Add(bookmod);
-            EF.Borrow.Add(Bmod);
             EF.SaveChanges();
             return Content("借书成功");
         }
@@ -77,7 +76,7 @@ namespace BookManager.Controllers
         {
             return View();
         }
-        public ActionResult Return(Models.Borrow borrow)
+        public ActionResult Return()
         {
             var CardID = Convert.ToInt32(Request["CardID "]);
             var mod = EF.Borrow.Where(x=>x.ID== CardID).Count();
@@ -97,10 +96,9 @@ namespace BookManager.Controllers
             var mod = EF.Borrow.FirstOrDefault(x=>x.ID==id);
             mod.LoseTime = DateTime.Now;
             EF.Borrow.Add(mod);
-            var bookmod = EF.Book.FirstOrDefault(x => x.ID == book.ID);
+            var bookmod = EF.Book.FirstOrDefault(x => x.ID ==mod.BookID);
             var Number = bookmod.Number;
             bookmod.Number = Number +1;
-            EF.Book.Add(bookmod);
             EF.SaveChanges();
             return Content("还书成功");
         }
