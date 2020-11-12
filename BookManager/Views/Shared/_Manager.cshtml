@@ -50,7 +50,7 @@
             layer.confirm('确定要退出登录？', {
                 btn: ['确定', '取消']
             }, function () {
-                $.get("/Home/Logout", function (res) {
+                $.get("/Manager/Logout", function (res) {
                     if (res == "success") {
                         layer.alert("您已退出账户！");
                         setTimeout(function () {

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using BookManager.Filter;
 using BookManager.Models;
 
 namespace BookManager.Controllers
 {
+    [Auth]
     public class HomeController : Controller
     {
 
@@ -30,6 +32,9 @@ namespace BookManager.Controllers
         [HttpGet]
         public ActionResult Register()
         {
+            if (Session["Identity"] != null)
+                return Redirect("/Manager/Index");
+
             return View();
         }
 
@@ -48,6 +53,7 @@ namespace BookManager.Controllers
                 EF.Sigin.Add(sigin);
                 EF.SaveChanges();
                 user.Uid = EF.Sigin.FirstOrDefault(x => x.Username == user.Name).ID;
+                user.EntryTime = DateTime.Now;
                 EF.User.Add(user);
                 EF.SaveChanges();
                 return Content("success");

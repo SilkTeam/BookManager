@@ -75,6 +75,7 @@ namespace BookManager.Controllers
                 EF.Sigin.Add(sigin);
                 EF.SaveChanges();
                 user.Uid = EF.Sigin.FirstOrDefault(x => x.Username == user.Name).ID;
+                user.EntryTime = DateTime.Now;
                 EF.User.Add(user);
                 EF.SaveChanges();
                 return Content("success");
@@ -108,6 +109,9 @@ namespace BookManager.Controllers
         {
             var user = EF.User.FirstOrDefault(x => x.ID == ID);
             var sigin = EF.Sigin.FirstOrDefault(x => x.ID == user.Uid);
+            if (sigin.Identity >= Convert.ToInt32(Session["Identity"]))
+                return Content("权限不足");
+
             if (user != null && sigin != null)
             {
                 EF.User.Remove(user);
