@@ -19,6 +19,7 @@ namespace BookManager.Controllers
                 return _ef;
             }
         }
+        //添加管理员
         public ActionResult Sigin()
         {
             return View();
@@ -38,6 +39,7 @@ namespace BookManager.Controllers
             EF.SaveChanges();            
             return Content("管理员添加成功！");
         }
+        //添加学生信息
         public ActionResult User()
         {
             return View();
