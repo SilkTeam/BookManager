@@ -71,11 +71,11 @@ Create Table [Log]
 )
 Go
 
--- 插入超级管理员和图书管理员数据
-Insert Into Sigin Values('admin','123456','2')
-Insert Into Sigin Values('root','123456','1')
-Insert Into [User] Values('admin','0','18','1','17677007700','2020/02/02')
-Insert Into [User] Values('root','0','18','2','18677337733','2020/02/02')
-Insert Into Category Values('测试分类')
-Insert Into Book Values('书名','','介绍','1','5','作者','2020/11/11')
+-- 插入数据
+Insert Into Sigin Values('admin','123456','2')-- 超级管理员
+Insert Into Sigin Values('root','123456','1')-- 图书管理员
+Insert Into [User] Values('admin','0','18','1','17677007700','2020/02/02')-- 超级管理员
+Insert Into [User] Values('root','0','18','2','18677337733','2020/02/02')-- 图书管理员
+Insert Into Category Values('测试分类')--分类
+Insert Into Book Values('书名','','介绍','1','5','作者','2020/11/11')-- 图书
 Go
