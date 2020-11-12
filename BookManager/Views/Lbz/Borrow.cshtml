@@ -1,0 +1,53 @@
+﻿@model BookManager.Models.Book
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Borrowing</title>
+</head>
+<body>
+    <div>
+
+        <form method="post" id="form1">
+            <label>图书信息</label>
+            <input type="hidden" value="@Model.ID" name="ID" id="ID" /><br />
+            名称： <input type="text" value="@Model.Name" name="Name" id="Name" /><br />
+            描述:<input type="text" value="@Model.Description" name="Description" id="Description" /><br />
+            类别：<input type="text" value="@Model.Category" name="Category" id="Category"><br />
+            库存： <input type="number" value="@Model.Number" name="Number" id="Number" /><br />
+            作者：<input type="text" value="@Model.Author" name="Author" id="Author" /><br />
+            <label>读者信息</label> <br/>
+            读者姓名：<input type="text" name="uname" id="uname" />
+            <input type="submit" value="借书" />
+        </form>
+    </div>
+
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script>
+        $("#form1").submit(function () {
+            var da = {
+                ID: $("#ID").val(),
+                Name: $("#Name").val(),
+                Description: $("#Description").val(),
+                Category: $("#Category").val(),
+                Number: $("#Number").val(),
+                Author: $("#Author").val(),
+                uname: $("#uname").val(),
+            }
+
+            $.post("/borrow/bowing", da, function (res) {
+                alert(res);
+                if (res == "借书成功") {
+                    alert(res);
+                    window.location.href = "/lbz/bindex";
+                }
+            })
+        })
+    </script>
+</body>
+</html>
