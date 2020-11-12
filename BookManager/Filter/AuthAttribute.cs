@@ -14,7 +14,7 @@ namespace BookManager.Filter
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            filterContext.Result = new RedirectResult("/Admin/Sigin");
+            filterContext.Result = new RedirectResult("/Home/Index");
         }
     }
 }

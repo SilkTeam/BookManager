@@ -108,10 +108,12 @@
                         layer.closeAll('loading');
                     }, 1000);
                     if (res == "success") {
-                        layer.alert("商品删除成功！");
+                        layer.alert("账号删除成功！");
                         setTimeout(function () {
                             window.location.href = "/Manager/Index";
                         }, 2500);
+                    } else {
+                        layer.alert(res);
                     };
                 });
             });

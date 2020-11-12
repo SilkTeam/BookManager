@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
-using BookManager.Filter;
 using BookManager.Models;
 
 namespace BookManager.Controllers
 {
-    [Auth]
     public class HomeController : Controller
     {
 
