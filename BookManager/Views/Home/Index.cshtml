@@ -1,10 +1,10 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var list = ViewBag.list as List<BookManager.Models.Book>;
 }
-@{ 
-    var tea = Session["login-tea"] as BookManager.Models.Sigin;
+<h2>Home/Index</h2>
+@*@foreach (var item in list)
+{
 
-}}
-<h2>Index</h2>
+}*@

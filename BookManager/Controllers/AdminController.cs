@@ -1,40 +1,39 @@
-﻿using System;
+﻿using BookManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
-using BookManager.Models;
 
 namespace BookManager.Controllers
 {
-    public class HomeController : Controller
+    public class AdminController : Controller
     {
-
         private BookManagerEntities _ef;
-        private BookManagerEntities EF
+        public BookManagerEntities EF
         {
-            get {
+            get
+            {
                 if (_ef == null)
                     _ef = new BookManagerEntities();
                 return _ef;
-            } 
+            }
         }
 
         public ActionResult Index()
         {
-            ViewBag.list = EF.Book.ToList();
+            ViewBag.list = EF.User.ToList();
             return View();
         }
 
         [HttpGet]
-        public ActionResult Register()
+        public ActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Register(Sigin sigin, User user)
+        public ActionResult Add(Sigin sigin, User user)
         {
             if (EF.Sigin.FirstOrDefault(x => x.Username == user.Name) != null)
             {
@@ -43,8 +42,6 @@ namespace BookManager.Controllers
             else
             {
                 sigin.Username = user.Name;
-                sigin.Password = "123456";
-                sigin.Identity = 0;
                 EF.Sigin.Add(sigin);
                 EF.SaveChanges();
                 user.Uid = EF.Sigin.FirstOrDefault(x => x.Username == user.Name).ID;

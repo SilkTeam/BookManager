@@ -4,10 +4,12 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using BookManager.Filter;
 using BookManager.Models;
 
 namespace BookManager.Controllers
 {
+    [Auth]
     public class ManagerController : Controller
     {
         private BookManagerEntities _ef;
@@ -18,6 +20,29 @@ namespace BookManager.Controllers
                 if (_ef == null)
                     _ef = new BookManagerEntities();
                 return _ef;
+            }
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Sigin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Sigin(Sigin sigin)
+        {
+            var mod = EF.Sigin.FirstOrDefault(x => x.Username == sigin.Username && x.Password == sigin.Password);
+            if (mod != null)
+            {
+                Session["User"] = mod;
+                return Content("success");
+            }
+            else
+            {
+                return Content("用户名或密码错误");
             }
         }
 
@@ -35,7 +60,7 @@ namespace BookManager.Controllers
         [HttpPost]
         public ActionResult Add(Sigin sigin, User user)
         {
-            if (EF.Sigin.FirstOrDefault(x=>x.Username ==  user.Name) != null)
+            if (EF.Sigin.FirstOrDefault(x => x.Username ==  user.Name) != null)
             {
                 return Content("当前用户名已被占用！");
             }

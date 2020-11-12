@@ -1,9 +1,10 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Add";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Admin.cshtml";
 }
-<h2>添加借阅卡</h2>
-<form action="/Manager/Add" method="post">
+<h2>添加账号</h2>
+<form action="/Admin/Add" method="post">
     <div class="form-group">
         <label>姓名:</label>
         <input type="text" class="form-control" id="Name" name="Name">
@@ -14,6 +15,14 @@
             <option value="0">女</option>
             <option value="1">男</option>
             <option value="2">保密</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>权限:</label>
+        <select class="form-control" id="Identity" name="Identity">
+            <option value="0">读者</option>
+            <option value="1">图书管理员</option>
+            @*<option value="2">超级管理员</option>*@
         </select>
     </div>
     <div class="form-group">
@@ -32,6 +41,7 @@
             layer.load(2, { shade: false });
             var data = {
                 Name: $("#Name").val(),
+                Identity: $("#Identity").val(),
                 Age: $("#Age").val(),
                 Sex: $("#Sex").val(),
                 Phone: $("#Phone").val(),

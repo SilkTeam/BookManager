@@ -1,8 +1,9 @@
-﻿@{
-    ViewBag.Title = "Add";
+﻿
+@{
+    ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>添加借阅卡</h2>
+<h2>注册借阅卡</h2>
 <form action="/Manager/Add" method="post">
     <div class="form-group">
         <label>姓名:</label>
@@ -24,7 +25,7 @@
         <label>联系方式:</label>
         <input type="tel" class="form-control" id="Phone" name="Phone">
     </div>
-    <button id="submit" class="btn btn-primary">添加</button>
+    <button id="submit" class="btn btn-primary">注册</button>
 </form>
 @section scripts{
     <script>
@@ -36,14 +37,14 @@
                 Sex: $("#Sex").val(),
                 Phone: $("#Phone").val(),
             };
-            $.post("/Manager/Add", data, function (res) {
+            $.post("/Home/Register", data, function (res) {
                 setTimeout(function () {
                     layer.closeAll('loading');
                 }, 1000);
                 if (res == "success") {
-                    layer.alert("添加成功！");
+                    layer.alert("注册成功！");
                     setTimeout(function () {
-                        window.location.href = "/Manager/Index";
+                        window.location.href = "/Home/Index";
                     }, 1500);
                 } else {
                     layer.alert(res);
