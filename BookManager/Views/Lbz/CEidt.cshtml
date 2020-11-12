@@ -1,0 +1,38 @@
+﻿@model BookManager.Models.Category
+
+@{
+    ViewBag.Title = "CEidt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CEidt</h2>
+
+
+<form action="" method="post"> 
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Category</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+      <input  type="hidden" name="ID" value="@Model.ID">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="Name" value="@Model.Name">
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+    </form>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

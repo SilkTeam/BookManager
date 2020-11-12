@@ -27,7 +27,7 @@ namespace BookManager.Controllers
         }
         public ActionResult Index()
         {
-           
+
             return View();
 
 
@@ -36,12 +36,32 @@ namespace BookManager.Controllers
         }
 
 
-        public ActionResult BIndex()
+        public ActionResult BIndex(int page = 1, int size = 10)
         {
 
 
-            var list = EF.Book.ToList();
+            var count = EF.Book.Count();
+            var pageCount = count / size;
+
+            if (count % size != 0)
+                pageCount++;
+            if (page > pageCount)
+            {
+                page = pageCount;
+            }
+            else if (page < 1)
+            {
+                page = 1;
+            }
+
+            var mod = EF.Sigin;
+            var list = EF.Book.OrderBy(x => x.ID).Skip((page - 1) * size).Take(size).ToList();
+            //var list = EF.Book.ToList();
+            ViewBag.page = page;
+            ViewBag.pageCount = pageCount;
             return View(list);
+
+
 
         }
 
@@ -49,7 +69,7 @@ namespace BookManager.Controllers
         [HttpGet]
         public ActionResult BAdd()
         {
-          var list=  EF.Category.ToList();
+            var list = EF.Category.ToList();
             ViewBag.aa = list;
 
             return View();
@@ -61,7 +81,7 @@ namespace BookManager.Controllers
 
             EF.Book.Add(book);
             EF.SaveChanges();
-           
+
 
             return Redirect("/lbz/BIndex");
 
@@ -110,6 +130,104 @@ namespace BookManager.Controllers
             ido.Category = book.Category;
             EF.SaveChanges();
             return Redirect("/lbz/BIndex");
+
+
+        }
+
+        [HttpGet]
+        public ActionResult CIndex(int page = 1, int size = 10)
+        {
+
+
+
+            var count = EF.Category.Count();
+            var pageCount = count / size;
+
+            if (count % size != 0)
+                pageCount++;
+            if (page > pageCount)
+            {
+                page = pageCount;
+            }
+            else if (page < 1)
+            {
+                page = 1;
+            }
+
+            var mod = EF.Sigin;
+            var list = EF.Category.OrderBy(x => x.ID).Skip((page - 1) * size).Take(size).ToList();
+            ViewBag.page = page;
+            ViewBag.pageCount = pageCount;
+            return View(list);
+
+
+
+
+
+
+        }
+
+    
+
+        [HttpGet]
+        public ActionResult CAdd()
+        {
+
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult CAdd(Models.Category book)
+        {
+
+            EF.Category.Add(book);
+            EF.SaveChanges();
+
+
+            return Redirect("/lbz/CIndex");
+
+        }
+
+        public ActionResult Cdelete(int ID)
+
+        {
+            var mod = EF.Book.FirstOrDefault(x => x.Category == ID);
+            if (mod != null)
+            {
+                return Content("");
+            }
+            else
+            {
+                var ido = EF.Category.FirstOrDefault(x => x.ID == ID);
+
+
+                EF.Category.Remove(ido);
+                EF.SaveChanges();
+
+                return Redirect("/lbz/CIndex");
+            }
+         
+
+
+        }
+        [HttpGet]
+        public ActionResult CEidt()
+        {
+            var ID = Convert.ToInt32(Request["ID"]);
+            var ido = EF.Category.FirstOrDefault(x => x.ID == ID);
+         
+           
+            return View(ido);
+
+        }
+        [HttpPost]
+        public ActionResult CEidt( Models.Category category)
+        {
+            var ID = Convert.ToInt32(Request["ID"]);
+            var ido = EF.Category.FirstOrDefault(x => x.ID == ID);
+            ido.Name = category.Name;
+            EF.SaveChanges();
+            return Redirect("/lbz/CIndex");
 
 
         }
