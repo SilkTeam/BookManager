@@ -36,7 +36,7 @@
         <td>读者注册借阅卡</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a>, <a href="https://github.com/huangjiguan">huangjiguan</a></td>
         <td></td>
-        <td>5%+25%</td>
+        <td>5%+95%</td>
     </tr>
     <tr>
         <td>4</td>
@@ -91,8 +91,8 @@
         <td>8</td>
         <td>新增管理员账号</td>
         <td><a href="https://github.com/405512252">405512252</a></td>
-        <td></td>
-        <td>32%</td>
+        <td>✔</td>
+        <td>100%</td>
     </tr>
     <tr>
         <td>9</td>
