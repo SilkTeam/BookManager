@@ -41,10 +41,12 @@
             }
 
             $.post("/borrow/bowing", da, function (res) {
-                alert(res);
+   
                 if (res == "借书成功") {
                     alert(res);
                     window.location.href = "/lbz/bindex";
+                } else {
+                    alert(res);
                 }
             })
         })
