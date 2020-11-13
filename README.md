@@ -56,14 +56,14 @@
     </tr>
     <tr>
         <td>2</td>
-        <td>忘记密码找回模块(挂失)</td>
+        <td>忘记密码找回模块(挂失卡)</td>
         <td>waiting...</td>
         <td>waiting...</td>
         <td>waiting...</td>
     </tr>
     <tr>
         <td>3</td>
-        <td>读者自助销卡(需要通过认证)</td>
+        <td>读者自助申请销卡(需后台确认)</td>
         <td>waiting...</td>
         <td>waiting...</td>
         <td>waiting...</td>
@@ -77,7 +77,7 @@
     </tr>
     <tr>
         <td>5</td>
-        <td>推荐、最新、借阅最多</td>
+        <td>首页推荐、最新、借阅最多</td>
         <td>waiting...</td>
         <td>waiting...</td>
         <td>waiting...</td>
