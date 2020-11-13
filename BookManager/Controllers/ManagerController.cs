@@ -131,6 +131,6 @@ namespace BookManager.Controllers
         {
             Session["User"] = Session["Identity"] = null;
             return Content("success");
-;        }
+;       }
     }
 }

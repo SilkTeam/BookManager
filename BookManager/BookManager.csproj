@@ -117,11 +117,11 @@
     <Content Include="Scripts\theme\default\loading-0.gif" />
     <Content Include="Scripts\theme\default\loading-1.gif" />
     <Content Include="Scripts\theme\default\loading-2.gif" />
+    <Content Include="Upload\Default.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\BorrowController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LbzController.cs" />
@@ -176,7 +176,6 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Borrow\Index.cshtml" />
     <Content Include="Views\Manager\Add.cshtml" />
     <Content Include="Views\Manager\Edit.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
@@ -187,10 +186,12 @@
     <Content Include="Views\Shared\_Manager.cshtml" />
     <Content Include="Views\Manager\Sigin.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
-    <Content Include="Views\Borrow\Borrowing.cshtml" />
     <Content Include="Views\Lbz\CAdd.cshtml" />
     <Content Include="Views\Lbz\CEidt.cshtml" />
     <Content Include="Views\Lbz\CIndex.cshtml" />
+    <Content Include="Views\Lbz\Borrow.cshtml" />
+    <Content Include="Views\Lbz\Return.cshtml" />
+    <Content Include="Views\Lbz\Returnlogin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
