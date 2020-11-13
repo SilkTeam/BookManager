@@ -70,7 +70,7 @@
     </tr>
     <tr>
         <td>4</td>
-        <td>大客户批量办借阅证</td>
+        <td>大客户批量注册借阅卡</td>
         <td>waiting...</td>
         <td>waiting...</td>
         <td>waiting...</td>
@@ -82,13 +82,13 @@
         <td>waiting...</td>
         <td>waiting...</td>
     </tr>
-    <!-- <tr>
+    <tr>
         <td>6</td>
+        <td>限制可借阅的书籍数量、分类</td>
         <td>waiting...</td>
         <td>waiting...</td>
         <td>waiting...</td>
-        <td>waiting...</td>
-    </tr> -->
+    </tr>
 </table>
 
 ### 项目进度
@@ -164,13 +164,6 @@
     </tr>
     <tr>
         <td>10</td>
-        <td>数据操作异常修复</td>
-        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
-        <td>✔</td>
-        <td>100%</td>
-    </tr>
-    <tr>
-        <td>11</td>
         <td>项目文档与演示文稿</td>
         <td><a href="https://github.com/huangjiguan">huangjiguan</a>, <a href="https://github.com/ififefef">ififefef</a></td>
         <td></td>
