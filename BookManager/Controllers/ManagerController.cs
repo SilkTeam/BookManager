@@ -22,6 +22,17 @@ namespace BookManager.Controllers
             }
         }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Book()
+        {
+            ViewBag.list = EF.Book.ToList();
+            return View();
+        }
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Sigin()
@@ -49,19 +60,19 @@ namespace BookManager.Controllers
             }
         }
 
-        public ActionResult Index()
+        public new ActionResult User()
         {
             return View(EF.User.ToList());
         }
 
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult AddUser()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Add(Sigin sigin, User user)
+        public ActionResult AddUser(Sigin sigin, User user)
         {
             if (EF.Sigin.FirstOrDefault(x => x.Username ==  user.Name) != null)
             {
@@ -70,7 +81,6 @@ namespace BookManager.Controllers
             else
             {
                 sigin.Username = user.Name;
-                //sigin.Password = "123456";
                 if (Convert.ToInt32(Session["Identity"]) == 1)
                     sigin.Identity = 0;
 
@@ -85,14 +95,14 @@ namespace BookManager.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int ID)
+        public ActionResult EditUser(int ID)
         {
             var mod = EF.User.FirstOrDefault(x => x.ID == ID);
             return View(mod);
         }
 
         [HttpPost]
-        public ActionResult Edit(User user)
+        public ActionResult EditUser(User user)
         {
             var mod = EF.User.FirstOrDefault(x => x.ID == user.ID);
             if (mod != null)

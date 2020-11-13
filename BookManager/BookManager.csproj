@@ -176,13 +176,12 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Manager\Add.cshtml" />
-    <Content Include="Views\Manager\Edit.cshtml" />
+    <Content Include="Views\Manager\AddUser.cshtml" />
+    <Content Include="Views\Manager\EditUser.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Lbz\BAdd.cshtml" />
     <Content Include="Views\Lbz\BIndex.cshtml" />
     <Content Include="Views\Lbz\Eidt.cshtml" />
-    <Content Include="Views\Lbz\Index.cshtml" />
     <Content Include="Views\Shared\_Manager.cshtml" />
     <Content Include="Views\Manager\Sigin.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
@@ -192,6 +191,9 @@
     <Content Include="Views\Lbz\Borrow.cshtml" />
     <Content Include="Views\Lbz\Return.cshtml" />
     <Content Include="Views\Lbz\Returnlogin.cshtml" />
+    <Content Include="Views\Shared\_User.cshtml" />
+    <Content Include="Views\Manager\User.cshtml" />
+    <Content Include="Views\Manager\Book.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

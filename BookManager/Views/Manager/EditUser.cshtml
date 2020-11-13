@@ -1,0 +1,57 @@
+﻿@model BookManager.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Manager.cshtml";
+}
+<h2>更新借阅卡</h2>
+<form action="/Manager/EditUser" method="post">
+    <div class="form-group">
+        <label>姓名:</label>
+        <input type="text" disabled class="form-control" id="Name" name="Name" value="@Model.Name">
+    </div>
+    <div class="form-group">
+        <label>性别:</label>
+        <select class="form-control" id="Sex" name="Sex" tabindex="@Model.Sex">
+            <option value="0">女</option>
+            <option value="1">男</option>
+            <option value="2">保密</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>年龄:</label>
+        <input type="number" class="form-control" id="Age" name="Age" value="@Model.Age">
+    </div>
+    <div class="form-group">
+        <label>联系方式:</label>
+        <input type="tel" class="form-control" id="Phone" name="Phone" value="@Model.Phone">
+    </div>
+    <button id="submit" class="btn btn-primary">更新信息</button>
+</form>
+@section scripts{
+    <script>
+        $("#submit").click(function () {
+            layer.load(2, { shade: false });
+            var data = {
+                Name: $("#Name").val(),
+                Age: $("#Age").val(),
+                Sex: $("#Sex").val(),
+                Phone: $("#Phone").val(),
+            };
+            $.post("/Manager/EditUser", data, function (res) {
+                setTimeout(function () {
+                    layer.closeAll('loading');
+                }, 1000);
+                if (res == "success") {
+                    layer.alert("更新成功！");
+                    setTimeout(function () {
+                        window.location.href = "/Manager/User";
+                    }, 1500);
+                } else {
+                    layer.alert(res);
+                };
+            });
+            return false;
+        });
+    </script>
+}

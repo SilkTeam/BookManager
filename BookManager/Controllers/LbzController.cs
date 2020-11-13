@@ -15,21 +15,12 @@ namespace BookManager.Controllers
         {
             get
             {
-
                 if (_ef == null)
                 {
                     _ef = new Models.BookManagerEntities();
-
                 }
                 return _ef;
             }
-
-
-        }
-        public ActionResult Index()
-        {
-
-            return View();
         }
 
 
@@ -39,11 +30,7 @@ namespace BookManager.Controllers
             var list = EF.Book.ToList();
           
             return View(list);
-
-
-
         }
-
 
         [HttpGet]
         public ActionResult BAdd()

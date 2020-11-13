@@ -18,10 +18,13 @@
                     <a class="nav-link" href="/Home/Index">首页</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Home/Register">借阅卡注册</a>
+                    <a class="nav-link" href="/Home/Get">图书借阅</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Manager/Sigin">用户登录</a>
+                    <a class="nav-link" href="/Home/Sigin">图书归还</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Logout" id="Logout">退出后台</a>
                 </li>
             </ul>
         </div>
@@ -38,6 +41,26 @@
     <script src="~/Scripts/jquery-3.5.1.min.js"></script>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <script src="~/Scripts/layer.js"></script>
+    <script>
+        $("#Logout").click(function () {
+            layer.load(2, { shade: false });
+            layer.confirm('确定要退出登录？', {
+                btn: ['确定', '取消']
+            }, function () {
+                $.get("/Manager/Logout", function (res) {
+                    if (res == "success") {
+                        layer.alert("您已退出账户！");
+                        setTimeout(function () {
+                            window.location.href = "/Manager/Sigin";
+                        }, 1500);
+                    };
+                });
+            });
+            setTimeout(function () {
+                layer.closeAll('loading');
+            }, 300);
+        });
+    </script>
     @RenderSection("scripts", false)
 </body>
 </html>
