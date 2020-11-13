@@ -104,7 +104,7 @@
                 btn: ['我意已决', '放下屠刀']
             }, function () {
                 layer.load(2, { shade: false });
-                $.get("/Manager/Delete?ID=" + ID, function (res) {
+                $.get("/Manager/DelUser?ID=" + ID, function (res) {
                     setTimeout(function () {
                         layer.closeAll('loading');
                     }, 1000);

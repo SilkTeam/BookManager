@@ -56,9 +56,21 @@ namespace BookManager.Controllers
             }
         }
 
-        public new ActionResult User()
+        public new ActionResult User(int page = 1, int size = 10)
         {
-            return View(EF.User.ToList());
+            var count = EF.User.Count();
+            var pageCount = count / size;
+
+            if (count % size != 0)
+                pageCount++;
+            if (page > pageCount)
+                page = pageCount;
+            if (page < 1)
+                page = 1;
+
+            ViewBag.page = page;
+            ViewBag.pageCount = pageCount;
+            return View(EF.User.OrderBy(x => x.ID).Skip((page - 1) * size).Take(size).ToList());
         }
 
         [HttpGet]
@@ -113,10 +125,39 @@ namespace BookManager.Controllers
             }
         }
 
-        public ActionResult Book()
+        public ActionResult DelUser(int ID)
         {
-            ViewBag.list = EF.Book.ToList();
-            return View();
+            var user = EF.User.FirstOrDefault(x => x.ID == ID);
+            var sigin = EF.Sigin.FirstOrDefault(x => x.ID == user.Uid);
+
+            if (user != null && sigin != null)
+            {
+                EF.User.Remove(user);
+                EF.Sigin.Remove(sigin);
+                EF.SaveChanges();
+                return Content("success");
+            }
+            else
+            {
+                return Content("用户不存在");
+            }
+        }
+
+        public ActionResult Book(int page = 1, int size = 10)
+        {
+            var count = EF.Book.Count();
+            var pageCount = count / size;
+
+            if (count % size != 0)
+                pageCount++;
+            if (page > pageCount)
+                page = pageCount;
+            if (page < 1)
+                page = 1;
+
+            ViewBag.page = page;
+            ViewBag.pageCount = pageCount;
+            return View(EF.Book.OrderBy(x => x.ID).Skip((page - 1) * size).Take(size).ToList());
         }
 
         [HttpGet]
@@ -225,10 +266,37 @@ namespace BookManager.Controllers
             return Redirect("/Manager/Book");
         }
 
-        public ActionResult Category()
+        public ActionResult DelBook(int ID)
         {
-            ViewBag.list = EF.Category.ToList();
-            return View();
+            var book = EF.Book.FirstOrDefault(x => x.ID == ID);
+
+            if (book != null)
+            {
+                EF.Book.Remove(book);
+                EF.SaveChanges();
+                return Content("success");
+            }
+            else
+            {
+                return Content("书籍不存在");
+            }
+        }
+
+        public ActionResult Category(int page = 1, int size = 10)
+        {
+            var count = EF.Category.Count();
+            var pageCount = count / size;
+
+            if (count % size != 0)
+                pageCount++;
+            if (page > pageCount)
+                page = pageCount;
+            if (page < 1)
+                page = 1;
+
+            ViewBag.page = page;
+            ViewBag.pageCount = pageCount;
+            return View(EF.Category.OrderBy(x => x.ID).Skip((page - 1) * size).Take(size).ToList());
         }
 
         [HttpGet]
@@ -268,23 +336,19 @@ namespace BookManager.Controllers
             return Redirect("/Manager/Book");
         }
 
-        public ActionResult Delete(int ID)
+        public ActionResult DelCategory(int ID)
         {
-            var user = EF.User.FirstOrDefault(x => x.ID == ID);
-            var sigin = EF.Sigin.FirstOrDefault(x => x.ID == user.Uid);
-            if (sigin.Identity >= Convert.ToInt32(Session["Identity"]))
-                return Content("权限不足");
+            var category = EF.Category.FirstOrDefault(x => x.ID == ID);
 
-            if (user != null && sigin != null)
+            if (category != null)
             {
-                EF.User.Remove(user);
-                EF.Sigin.Remove(sigin);
+                EF.Category.Remove(category);
                 EF.SaveChanges();
                 return Content("success");
             }
             else
             {
-                return Content("用户不存在");
+                return Content("分类不存在");
             }
         }
 

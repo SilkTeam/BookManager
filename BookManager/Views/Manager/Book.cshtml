@@ -1,7 +1,7 @@
-﻿@{
+﻿@model IEnumerable<BookManager.Models.Book>
+@{
     ViewBag.Title = "Book";
     Layout = "~/Views/Shared/_Manager.cshtml";
-    var list = ViewBag.list as List<BookManager.Models.Book>;
 }
 <h2>书籍管理</h2>
 <a href="/Manager/AddBook" class="btn btn-info" role="button">添加书籍</a>
@@ -19,7 +19,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in list)
+        @foreach (var item in Model)
         {
             <tr>
                 <td>@item.ID</td>
