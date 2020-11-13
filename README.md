@@ -42,7 +42,7 @@
 ### 新增需求
 <table>
     <th>
-        <td>内容</td>
+        <td>功能</td>
         <td>负责人</td>
         <td>测试</td>
         <td>完成度</td>
@@ -50,6 +50,41 @@
     <tr>
         <td>1</td>
         <td>允许读者自助借阅书籍</td>
+        <td><a href="https://github.com/Stefan-dog">Stefan-dog</a></td>
+        <td></td>
+        <td>1%</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>忘记密码找回模块(挂失)</td>
+        <td>waiting...</td>
+        <td>waiting...</td>
+        <td>waiting...</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>读者自助销卡(需要通过认证)</td>
+        <td>waiting...</td>
+        <td>waiting...</td>
+        <td>waiting...</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>大客户批量办借阅证</td>
+        <td>waiting...</td>
+        <td>waiting...</td>
+        <td>waiting...</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>/Home/Index 推荐书籍、借阅最多、最新入馆</td>
+        <td>waiting...</td>
+        <td>waiting...</td>
+        <td>waiting...</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>waiting...</td>
         <td>waiting...</td>
         <td>waiting...</td>
         <td>waiting...</td>
@@ -83,7 +118,7 @@
         <td>读者注册借阅卡</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a>, <a href="https://github.com/huangjiguan">huangjiguan</a></td>
         <td>✔</td>
-        <td>45%+55%</td>
+        <td>100%</td>
     </tr>
     <tr>
         <td>4</td>
@@ -104,7 +139,7 @@
         <td>图书借还模块</td>
         <td><a href="https://github.com/tengjinkai">tengjinkai</a></td>
         <td></td>
-        <td>78%</td>
+        <td>90%</td>
     </tr>
     <tr>
         <td>7</td>
@@ -132,7 +167,7 @@
         <td>前端美化和Jquery优化</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a></td>
         <td></td>
-        <td>67%</td>
+        <td>80%</td>
     </tr>
     <tr>
         <td>10</td>

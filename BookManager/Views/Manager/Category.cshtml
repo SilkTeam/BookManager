@@ -5,12 +5,14 @@
     var list = ViewBag.list as List<BookManager.Models.Category>;
 }
 
-<h2>书籍管理</h2>
+<h2>分类管理</h2>
+<a href="/Manager/AddCategory" class="btn btn-info" role="button">添加分类</a>
 <table class="table table-hover">
     <thead>
         <tr>
             <th>编号</th>
             <th>分类名</th>
+            <th>操作</th>
         </tr>
     </thead>
     <tbody>
@@ -21,8 +23,8 @@
                 <td>@item.Name</td>
                 <td>
                     <div class="btn-group">
-                        <a href="/Manager/EditCategory?ID=@item.ID" class="btn btn-warning" role="button">编辑商品</a>
-                        <a href="#Delete" id="Delete" onclick="Delete(@item.ID)" class="btn btn-danger" role="button">删除商品</a>
+                        <a href="/Manager/EditCategory?ID=@item.ID" class="btn btn-warning" role="button">编辑</a>
+                        <a href="#Delete" id="Delete" onclick="Delete(@item.ID)" class="btn btn-danger" role="button">删除</a>
                     </div>
                 </td>
             </tr>

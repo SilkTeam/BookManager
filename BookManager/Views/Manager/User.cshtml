@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Manager.cshtml";
 }
 <h2>用户管理</h2>
+<a href="/Manager/AddUser" class="btn btn-info" role="button">添加用户</a>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -41,8 +42,8 @@
                 <td>@item.EntryTime</td>
                 <td>
                     <div class="btn-group">
-                        <a href="/Manager/EditUser?ID=@item.ID" class="btn btn-warning" role="button">编辑商品</a>
-                        <a href="#Delete" id="Delete" onclick="Delete(@item.ID)" class="btn btn-danger" role="button">删除商品</a>
+                        <a href="/Manager/EditUser?ID=@item.ID" class="btn btn-warning" role="button">编辑</a>
+                        <a href="#Delete" id="Delete" onclick="Delete(@item.ID)" class="btn btn-danger" role="button">删除</a>
                     </div>
                 </td>
             </tr>

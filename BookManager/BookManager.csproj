@@ -126,6 +126,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LbzController.cs" />
     <Compile Include="Filter\AuthAttribute.cs" />
+    <Compile Include="Filter\IdentityAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -196,6 +197,7 @@
     <Content Include="Views\Manager\Book.cshtml" />
     <Content Include="Views\Manager\Category.cshtml" />
     <Content Include="Views\Manager\AddBook.cshtml" />
+    <Content Include="Views\Manager\EditBook.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
