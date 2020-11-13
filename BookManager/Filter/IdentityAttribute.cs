@@ -14,7 +14,7 @@ namespace BookManager.Filter
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            filterContext.Result = new RedirectResult("/Home/Index");
+            filterContext.Result = new ContentResult() { Content = "权限不足" };
         }
     }
 }

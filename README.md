@@ -131,8 +131,8 @@
         <td>5</td>
         <td>图书分类与管理</td>
         <td><a href="https://github.com/15078709136">15078709136</a></td>
-        <td></td>
-        <td>90%</td>
+        <td>✔</td>
+        <td>100%</td>
     </tr>
     <tr>
         <td>6</td>
@@ -160,7 +160,7 @@
         <td>前端美化和Jquery优化</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a></td>
         <td></td>
-        <td>80%</td>
+        <td>90%</td>
     </tr>
     <tr>
         <td>10</td>

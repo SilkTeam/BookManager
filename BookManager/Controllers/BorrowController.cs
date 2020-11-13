@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace BookManager.Controllers
 {
-    public class LbzController : Controller
+    public class BorrowController : Controller
     {
 
         private Models.BookManagerEntities _ef;

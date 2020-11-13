@@ -124,7 +124,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LbzController.cs" />
+    <Compile Include="Controllers\BorrowController.cs" />
     <Compile Include="Filter\AuthAttribute.cs" />
     <Compile Include="Filter\IdentityAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -183,18 +183,17 @@
     <Content Include="Views\Shared\_Manager.cshtml" />
     <Content Include="Views\Manager\Sigin.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
-    <Content Include="Views\Lbz\CAdd.cshtml" />
-    <Content Include="Views\Lbz\CEidt.cshtml" />
-    <Content Include="Views\Lbz\CIndex.cshtml" />
-    <Content Include="Views\Lbz\Borrow.cshtml" />
-    <Content Include="Views\Lbz\Return.cshtml" />
-    <Content Include="Views\Lbz\Returnlogin.cshtml" />
+    <Content Include="Views\Borrow\Borrow.cshtml" />
+    <Content Include="Views\Borrow\Return.cshtml" />
+    <Content Include="Views\Borrow\Returnlogin.cshtml" />
     <Content Include="Views\Shared\_User.cshtml" />
     <Content Include="Views\Manager\User.cshtml" />
     <Content Include="Views\Manager\Book.cshtml" />
     <Content Include="Views\Manager\Category.cshtml" />
     <Content Include="Views\Manager\AddBook.cshtml" />
     <Content Include="Views\Manager\EditBook.cshtml" />
+    <Content Include="Views\Manager\AddCategory.cshtml" />
+    <Content Include="Views\Manager\EditCategory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

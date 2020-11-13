@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_Manager.cshtml";
+}
+<h2>添加分类</h2>
+<form action="/Manager/AddUser" method="post">
+    <div class="form-group">
+        <label>分类名:</label>
+        <input type="text" class="form-control" id="Name" name="Name">
+    </div>
+    <button id="submit" class="btn btn-primary">添加</button>
+</form>
+@section scripts{
+    <script>
+        $("#submit").click(function () {
+            layer.load(2, { shade: false });
+            var data = {
+                Name: $("#Name").val(),
+            };
+            $.post("/Manager/AddCategory", data, function (res) {
+                setTimeout(function () {
+                    layer.closeAll('loading');
+                }, 1000);
+                if (res == "success") {
+                    layer.alert("添加成功！");
+                    setTimeout(function () {
+                        window.location.href = "/Manager/Category";
+                    }, 1500);
+                } else {
+                    layer.alert(res);
+                };
+            });
+            return false;
+        });
+    </script>
+}

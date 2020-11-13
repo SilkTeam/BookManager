@@ -29,18 +29,6 @@ namespace BookManager.Controllers
             return View();
         }
 
-        public ActionResult Book()
-        {
-            ViewBag.list = EF.Book.ToList();
-            return View();
-        }
-
-        public ActionResult Category()
-        {
-            ViewBag.list = EF.Category.ToList();
-            return View();
-        }
-
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Sigin()
@@ -125,6 +113,11 @@ namespace BookManager.Controllers
             }
         }
 
+        public ActionResult Book()
+        {
+            ViewBag.list = EF.Book.ToList();
+            return View();
+        }
 
         [HttpGet]
         public ActionResult AddBook()
@@ -136,50 +129,42 @@ namespace BookManager.Controllers
         [HttpPost]
         public ActionResult AddBook(Book book)
         {
-            if (Convert.ToInt32(Session["Identity"]) == 1)
+            if (book.Img != null)
             {
-                return Content("<script>alert('权限不足');</script>");
+                // 接收前端传回来的文件
+                var file = Request.Files["Img"];
+
+                // 限制文件大小
+                var fileSize = file.ContentLength;
+                var maxSize = fileSize * 2048;
+                if (fileSize > maxSize)
+                    return Content("<script>alert('文件超出大小限制2M');</script>");//文件超出大小限制250kb
+
+                // 定义文件存储路径
+                var wlPath = Server.MapPath("/");
+                wlPath += $"/Upload/{DateTime.Now:yyyyMMdd}/";
+                if (!Directory.Exists(wlPath))
+                    Directory.CreateDirectory(wlPath);
+
+                // 后端重命名文件、获取后缀名
+                var names = file.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                var expendName = names[names.Length - 1];
+                var newName = Guid.NewGuid().ToString("N") + "." + expendName;
+                var newPath = wlPath + newName;
+
+                // 判断后缀名是否允许
+                List<string> exlist = new List<string>() { "jpg", "jpeg", "git", "png", "bmp" };
+                if (exlist.Where(x => x == expendName).Count() == 0)
+                    return Content("<script>alert('只可以上传图片');</script>");// 只可以上传图片！
+
+                // 保存并返回
+                file.SaveAs(newPath);
+                book.Img = $"/Upload/{DateTime.Now:yyyyMMdd}/" + newName;
             }
-            else
-            {
-                if (book.Img != null)
-                {
-                    // 接收前端传回来的文件
-                    var file = Request.Files["Img"];
-
-                    // 限制文件大小
-                    var fileSize = file.ContentLength;
-                    var maxSize = fileSize * 2048;
-                    if (fileSize > maxSize)
-                        return Content("<script>alert('文件超出大小限制2M');</script>");//文件超出大小限制250kb
-
-                    // 定义文件存储路径
-                    var wlPath = Server.MapPath("/");
-                    wlPath += $"/Upload/{DateTime.Now:yyyyMMdd}/";
-                    if (!Directory.Exists(wlPath))
-                        Directory.CreateDirectory(wlPath);
-
-                    // 后端重命名文件、获取后缀名
-                    var names = file.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-                    var expendName = names[names.Length - 1];
-                    var newName = Guid.NewGuid().ToString("N") + "." + expendName;
-                    var newPath = wlPath + newName;
-
-                    // 判断后缀名是否允许
-                    List<string> exlist = new List<string>() { "jpg", "jpeg", "git", "png", "bmp" };
-                    if (exlist.Where(x => x == expendName).Count() == 0)
-                        return Content("<script>alert('只可以上传图片');</script>");// 只可以上传图片！
-
-                    // 保存并返回
-                    file.SaveAs(newPath);
-                    book.Img = $"/Upload/{DateTime.Now:yyyyMMdd}/" + newName;
-                }
-
-                book.EntryTime = DateTime.Now;
-                EF.Book.Add(book);
-                EF.SaveChanges();
-                return Redirect("/Manager/Book");
-            }
+            book.EntryTime = DateTime.Now;
+            EF.Book.Add(book);
+            EF.SaveChanges();
+            return Redirect("/Manager/Book");
         }
 
         [HttpGet]
@@ -236,6 +221,49 @@ namespace BookManager.Controllers
                 book.Img = $"/Upload/{DateTime.Now:yyyyMMdd}/" + newName;
             }
 
+            EF.SaveChanges();
+            return Redirect("/Manager/Book");
+        }
+
+        public ActionResult Category()
+        {
+            ViewBag.list = EF.Category.ToList();
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult AddCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddCategory(Category category)
+        {
+            EF.Category.Add(category);
+            EF.SaveChanges();
+            return Redirect("/Manager/Book");
+        }
+
+        [HttpGet]
+        public ActionResult EditCategory(int ID)
+        {
+            var mod = EF.Category.FirstOrDefault(x => x.ID == ID);
+            if (mod != null)
+            {
+                return View(mod);
+            }
+            else
+            {
+                return Content("非法访问");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditCategory(Category category)
+        {
+            var mod = EF.Category.FirstOrDefault(x => x.ID == category.ID);
+            mod = category;
             EF.SaveChanges();
             return Redirect("/Manager/Book");
         }
