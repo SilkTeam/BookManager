@@ -198,20 +198,48 @@ namespace BookManager.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditBook(User user)
+        public ActionResult EditBook(Book book)
         {
-            var mod = EF.User.FirstOrDefault(x => x.ID == user.ID);
-            if (mod != null)
+            var mod = EF.Book.FirstOrDefault(x => x.ID == book.ID);
+
+            mod = book;
+            if (book.Img != null)
             {
-                mod = user;
-                EF.SaveChanges();
-                return Content("success");
+                // 接收前端传回来的文件
+                var file = Request.Files["Img"];
+
+                // 限制文件大小
+                var fileSize = file.ContentLength;
+                var maxSize = fileSize * 2048;
+                if (fileSize > maxSize)
+                    return Content("<script>alert('文件超出大小限制2M');</script>");//文件超出大小限制250kb
+
+                // 定义文件存储路径
+                var wlPath = Server.MapPath("/");
+                wlPath += $"/Upload/{DateTime.Now:yyyyMMdd}/";
+                if (!Directory.Exists(wlPath))
+                    Directory.CreateDirectory(wlPath);
+
+                // 后端重命名文件、获取后缀名
+                var names = file.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                var expendName = names[names.Length - 1];
+                var newName = Guid.NewGuid().ToString("N") + "." + expendName;
+                var newPath = wlPath + newName;
+
+                // 判断后缀名是否允许
+                List<string> exlist = new List<string>() { "jpg", "jpeg", "git", "png", "bmp" };
+                if (exlist.Where(x => x == expendName).Count() == 0)
+                    return Content("<script>alert('只可以上传图片');</script>");// 只可以上传图片！
+
+                // 保存并返回
+                file.SaveAs(newPath);
+                book.Img = $"/Upload/{DateTime.Now:yyyyMMdd}/" + newName;
             }
-            else
-            {
-                return Content("非法访问！");// 用户不存在
-            }
+
+            EF.SaveChanges();
+            return Redirect("/Manager/Book");
         }
+
         public ActionResult Delete(int ID)
         {
             var user = EF.User.FirstOrDefault(x => x.ID == ID);

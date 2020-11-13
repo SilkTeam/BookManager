@@ -62,33 +62,33 @@
         <td>waiting...</td>
     </tr>
     <tr>
-        <td>2</td>
+        <td>3</td>
         <td>读者自助销卡(需要通过认证)</td>
         <td>waiting...</td>
         <td>waiting...</td>
         <td>waiting...</td>
     </tr>
     <tr>
-        <td>3</td>
+        <td>4</td>
         <td>大客户批量办借阅证</td>
         <td>waiting...</td>
         <td>waiting...</td>
         <td>waiting...</td>
     </tr>
     <tr>
-        <td>4</td>
-        <td>/Home/Index 推荐书籍、借阅最多、最新入馆</td>
-        <td>waiting...</td>
-        <td>waiting...</td>
-        <td>waiting...</td>
-    </tr>
-    <tr>
         <td>5</td>
-        <td>waiting...</td>
+        <td>推荐、最新、借阅最多</td>
         <td>waiting...</td>
         <td>waiting...</td>
         <td>waiting...</td>
     </tr>
+    <!-- <tr>
+        <td>6</td>
+        <td>waiting...</td>
+        <td>waiting...</td>
+        <td>waiting...</td>
+        <td>waiting...</td>
+    </tr> -->
 </table>
 
 ### 项目进度
@@ -149,13 +149,6 @@
         <td>100%</td>
     </tr>
     <tr>
-        <td>7-1</td>
-        <td>数据操作异常修复</td>
-        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
-        <td>✔</td>
-        <td>100%</td>
-    </tr>
-    <tr>
         <td>8</td>
         <td>新增管理员账号</td>
         <td><a href="https://github.com/Tender-dcj">Tender-dcj</a></td>
@@ -171,6 +164,13 @@
     </tr>
     <tr>
         <td>10</td>
+        <td>数据操作异常修复</td>
+        <td><a href="https://github.com/Skilemon">Skilemon</a></td>
+        <td>✔</td>
+        <td>100%</td>
+    </tr>
+    <tr>
+        <td>11</td>
         <td>项目文档与演示文稿</td>
         <td><a href="https://github.com/huangjiguan">huangjiguan</a>, <a href="https://github.com/ififefef">ififefef</a></td>
         <td></td>
