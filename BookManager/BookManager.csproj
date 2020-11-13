@@ -194,6 +194,7 @@
     <Content Include="Views\Shared\_User.cshtml" />
     <Content Include="Views\Manager\User.cshtml" />
     <Content Include="Views\Manager\Book.cshtml" />
+    <Content Include="Views\Manager\Category.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

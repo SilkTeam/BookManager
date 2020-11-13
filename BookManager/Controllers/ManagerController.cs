@@ -33,6 +33,12 @@ namespace BookManager.Controllers
             return View();
         }
 
+        public ActionResult Category()
+        {
+            ViewBag.list = EF.Category.ToList();
+            return View();
+        }
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Sigin()

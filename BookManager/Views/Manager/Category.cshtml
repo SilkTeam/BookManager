@@ -1,20 +1,16 @@
-﻿@{
-    ViewBag.Title = "Book";
+﻿
+@{
+    ViewBag.Title = "Category";
     Layout = "~/Views/Shared/_Manager.cshtml";
-    var list = ViewBag.list as List<BookManager.Models.Book>;
+    var list = ViewBag.list as List<BookManager.Models.Category>;
 }
+
 <h2>书籍管理</h2>
 <table class="table table-hover">
     <thead>
         <tr>
             <th>编号</th>
-            <th>封面</th>
-            <th>书名</th>
-            <th>介绍</th>
-            <th>分类</th>
-            <th>作者</th>
-            <th>数量</th>
-            <th>操作</th>
+            <th>分类名</th>
         </tr>
     </thead>
     <tbody>
@@ -22,15 +18,10 @@
         {
             <tr>
                 <td>@item.ID</td>
-                <td>@item.Img</td>
                 <td>@item.Name</td>
-                <td>@item.Description</td>
-                <td>@item.Category1.Name</td>
-                <td>@item.Author</td>
-                <td>@item.Number</td>
                 <td>
                     <div class="btn-group">
-                        <a href="/Manager/EditBook?ID=@item.ID" class="btn btn-warning" role="button">编辑商品</a>
+                        <a href="/Manager/EditCategory?ID=@item.ID" class="btn btn-warning" role="button">编辑商品</a>
                         <a href="#Delete" id="Delete" onclick="Delete(@item.ID)" class="btn btn-danger" role="button">删除商品</a>
                     </div>
                 </td>
@@ -50,13 +41,13 @@
             else
             {
                 <li class="page-item">
-                    <a class="page-link" href="/Manager/Book?page=1">首页</a>
+                    <a class="page-link" href="/Manager/Category?page=1">首页</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="/Manager/Book?page=@(ViewBag.page - 1)">上页</a>
+                    <a class="page-link" href="/Manager/Category?page=@(ViewBag.page - 1)">上页</a>
                 </li>
             }
-            <li class="page-item"><a class="page-link" href="/Home/Book?page=@(ViewBag.page)">@(ViewBag.page)</a></li>
+            <li class="page-item"><a class="page-link" href="/Manager/Category?page=@(ViewBag.page)">@(ViewBag.page)</a></li>
             @if (ViewBag.page == ViewBag.pageCount)
             {
                 <li class="page-item disabled">
@@ -66,10 +57,10 @@
             else
             {
                 <li class="page-item">
-                    <a class="page-link" href="/Manager/Book?page=@(ViewBag.page + 1)">下页</a>
+                    <a class="page-link" href="/Manager/Category?page=@(ViewBag.page + 1)">下页</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="/Manager/Book?page=@(ViewBag.pageCount)">尾页</a>
+                    <a class="page-link" href="/Manager/Category?page=@(ViewBag.pageCount)">尾页</a>
                 </li>
             }
             <div class="col-3 btn-group">
@@ -84,7 +75,7 @@
         $("#junpPage").click(function () {
             layer.load(2, { shade: false });
             setTimeout(function () {
-                window.location.href = "/Manager/Book?page=" + $("#PageJ").val();
+                window.location.href = "/Manager/Category?page=" + $("#PageJ").val();
             }, 350);
             return false;
         });
