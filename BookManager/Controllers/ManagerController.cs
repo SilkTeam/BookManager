@@ -33,10 +33,14 @@ namespace BookManager.Controllers
         [AllowAnonymous]
         public ActionResult Sigin()
         {
-            if (Session["Identity"] != null)
+            if (Convert.ToInt32(Session["Identity"]) < 1)
+            {
+                return Redirect("/Home/Index");
+            }
+            else
+            {
                 return Redirect("/Manager/Index");
-
-            return View();
+            }
         }
 
         [HttpPost]
@@ -48,7 +52,14 @@ namespace BookManager.Controllers
             {
                 Session["User"] = mod;
                 Session["Identity"] = mod.Identity;
-                return Content("success");
+                if (mod.Identity < 1)
+                {
+                    return Content("user");
+                }
+                else
+                {
+                    return Content("manager");
+                }
             }
             else
             {

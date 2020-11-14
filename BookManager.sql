@@ -49,12 +49,12 @@ Create Table Book
 )
 Go
 
---借还信息表
+--借阅信息表
 Create Table Borrow
 (
 	ID int primary key identity(1,1),
 	BookID int foreign key references Book(ID),
-	[Use] bit not null,
+	[Use] bit not null,-- true为借 false为还
 	CardID int foreign key references [User](ID),
 	GetTime datetime,
 	LoseTime datetime,

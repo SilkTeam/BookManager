@@ -50,43 +50,43 @@
     <tr>
         <td>1</td>
         <td>允许读者自助借阅书籍</td>
-        <td><a href="https://github.com/Stefan-dog">Stefan-dog</a></td>
         <td></td>
-        <td>1%</td>
+        <td></td>
+        <td>waiting...</td>
     </tr>
     <tr>
         <td>2</td>
         <td>忘记密码找回模块(挂失卡)</td>
-        <td>waiting...</td>
-        <td>waiting...</td>
+        <td></td>
+        <td></td>
         <td>waiting...</td>
     </tr>
     <tr>
         <td>3</td>
         <td>读者自助申请销卡(需后台确认)</td>
-        <td>waiting...</td>
-        <td>waiting...</td>
+        <td></td>
+        <td></td>
         <td>waiting...</td>
     </tr>
     <tr>
         <td>4</td>
         <td>大客户批量注册借阅卡</td>
-        <td>waiting...</td>
-        <td>waiting...</td>
+        <td></td>
+        <td></td>
         <td>waiting...</td>
     </tr>
     <tr>
         <td>5</td>
         <td>首页推荐、最新、借阅最多</td>
-        <td>waiting...</td>
-        <td>waiting...</td>
+        <td></td>
+        <td></td>
         <td>waiting...</td>
     </tr>
     <tr>
         <td>6</td>
         <td>限制可借阅的书籍数量、分类</td>
-        <td>waiting...</td>
-        <td>waiting...</td>
+        <td></td>
+        <td></td>
         <td>waiting...</td>
     </tr>
 </table>
