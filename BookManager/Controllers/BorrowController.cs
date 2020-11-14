@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using BookManager.Filter;
 using BookManager.Models;
+using System;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace BookManager.Controllers
 {
+    [Auth]
     public class BorrowController : Controller
     {
-
         private BookManagerEntities _ef;
         public BookManagerEntities EF
         {
@@ -30,7 +28,7 @@ namespace BookManager.Controllers
         }
 
         //借书
-        public ActionResult Bowing(Models.Book book)
+        public ActionResult Bowing(Book book)
         {
             var uname = Request["uname"];
             if (uname == null)
@@ -56,16 +54,16 @@ namespace BookManager.Controllers
         public ActionResult Return()
         {
             var CardID = Convert.ToInt32(Request["CardID"]);
-                var mod = EF.Borrow.Where(x => x.CardID == CardID).Count();
-                if (mod == 0)
-                    return Content("目前没有书可还");
-                var bow = EF.Borrow.FirstOrDefault(x => x.ID == CardID);
-                var B1 = EF.Book.FirstOrDefault(x => x.ID == bow.BookID);
-                var U1 = EF.User.FirstOrDefault(x => x.ID == bow.CardID);
-                ViewBag.mod = mod;
-                ViewBag.Book = B1;
-                ViewBag.User = U1;
-                return View();
+            var mod = EF.Borrow.Where(x => x.CardID == CardID).Count();
+            if (mod == 0)
+                return Content("目前没有书可还");
+            var bow = EF.Borrow.FirstOrDefault(x => x.ID == CardID);
+            var B1 = EF.Book.FirstOrDefault(x => x.ID == bow.BookID);
+            var U1 = EF.User.FirstOrDefault(x => x.ID == bow.CardID);
+            ViewBag.mod = mod;
+            ViewBag.Book = B1;
+            ViewBag.User = U1;
+            return View();
         }
 
         //还书
@@ -83,4 +81,4 @@ namespace BookManager.Controllers
         }
     }
 }
-    
+

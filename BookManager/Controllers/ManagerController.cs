@@ -1,11 +1,10 @@
-﻿using System;
+﻿using BookManager.Filter;
+using BookManager.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using BookManager.Filter;
-using BookManager.Models;
 
 namespace BookManager.Controllers
 {
@@ -93,7 +92,7 @@ namespace BookManager.Controllers
         [HttpPost]
         public ActionResult AddUser(Sigin sigin, User user)
         {
-            if (EF.Sigin.FirstOrDefault(x => x.Username ==  user.Name) != null)
+            if (EF.Sigin.FirstOrDefault(x => x.Username == user.Name) != null)
             {
                 return Content("当前用户名已被占用！");
             }
@@ -223,7 +222,7 @@ namespace BookManager.Controllers
         public ActionResult EditBook(int ID)
         {
             var mod = EF.Book.FirstOrDefault(x => x.ID == ID);
-            if(mod != null)
+            if (mod != null)
             {
                 ViewBag.list = EF.Category.ToList();
                 return View(mod);
@@ -367,6 +366,7 @@ namespace BookManager.Controllers
         {
             Session["User"] = Session["Identity"] = null;
             return Content("success");
-;       }
+            ;
+        }
     }
 }

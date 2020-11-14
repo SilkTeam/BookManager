@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BookManager.Models;
+using System;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using BookManager.Models;
 
 namespace BookManager.Controllers
 {
@@ -13,11 +11,12 @@ namespace BookManager.Controllers
         private BookManagerEntities _ef;
         private BookManagerEntities EF
         {
-            get {
+            get
+            {
                 if (_ef == null)
                     _ef = new BookManagerEntities();
                 return _ef;
-            } 
+            }
         }
 
         public ActionResult Index()
