@@ -32,14 +32,18 @@ namespace BookManager.Controllers
         [AllowAnonymous]
         public ActionResult Sigin()
         {
-            if (Convert.ToInt32(Session["Identity"]) < 1)
+            if (Session["User"] != null)
             {
-                return Redirect("/Home/Index");
+                if (Convert.ToInt32(Session["Identity"]) < 1)
+                {
+                    return Redirect("/Home/Index");
+                }
+                else
+                {
+                    return Redirect("/Manager/Index");
+                }
             }
-            else
-            {
-                return Redirect("/Manager/Index");
-            }
+            return View();
         }
 
         [HttpPost]
