@@ -375,5 +375,30 @@ namespace BookManager.Controllers
             return Content("success");
             ;
         }
+
+        [HttpGet]
+        public ActionResult Borrow()
+        {
+            return View(EF.Borrow.Where(x => x.Use == true).ToList());
+        }
+
+        // 图书归还:User
+        [HttpPost]
+        public ActionResult Borrow(int ID)
+        {
+            //var user = Session["User"] as User;
+            var mod = EF.Borrow.FirstOrDefault(x => x.ID == ID && x.Use == true);
+            if (mod != null)
+            {
+                mod.Use = false;
+                mod.LoseTime = DateTime.Now;
+                EF.SaveChanges();
+                return Content("success");
+            }
+            else
+            {
+                return Content("越权操作！");
+            }
+        }
     }
 }

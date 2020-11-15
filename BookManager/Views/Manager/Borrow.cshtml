@@ -1,0 +1,109 @@
+﻿@model IEnumerable<BookManager.Models.Borrow>
+@{
+    ViewBag.Title = "Borrow";
+    Layout = "~/Views/Shared/_Manager.cshtml";
+}
+<h2>借阅管理</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>书名</th>
+            <th>借阅人</th>
+            <th>借阅时间</th>
+            <th>当前状态</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Book.Name</td>
+                <td>@item.User.Name</td>
+                <td>@item.GetTime</td>
+                <td>
+                    @if (item.Use)
+                    {
+                        @:未还书
+                    }
+                    else
+                    {
+                        @:已还书
+                    }
+                </td>
+                <td>
+                    <a href="#Borrow" id="Borrow" onclick="Borrow(@item.ID)" class="btn btn-danger" role="button">还书</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="bd-example">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            @if (ViewBag.page == 1)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" aria-disabled="true">首页</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Manager/Borrow?page=1">首页</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="/Manager/Borrow?page=@(ViewBag.page - 1)">上页</a>
+                </li>
+            }
+            <li class="page-item"><a class="page-link" href="/Manager/Borrow?page=@(ViewBag.page)">@(ViewBag.page)</a></li>
+            @if (ViewBag.page == ViewBag.pageCount)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" aria-disabled="true">尾页</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Manager/Borrow?page=@(ViewBag.page + 1)">下页</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="/Manager/Borrow?page=@(ViewBag.pageCount)">尾页</a>
+                </li>
+            }
+            <div class="col-3 btn-group">
+                <input type="number" id="PageJ" class="form-control col-6" placeholder="请输入页数">
+                <a href="#junpPage" id="junpPage" class="btn btn-info col-4" role="button">确定</a>
+            </div>
+        </ul>
+    </nav>
+</div>
+@section scripts{
+    <script>
+        $("#junpPage").click(function () {
+            layer.load(2, { shade: false });
+            setTimeout(function () {
+                window.location.href = "/Manager/Borrow?page=" + $("#PageJ").val();
+            }, 350);
+            return false;
+        });
+        function Lose(ID) {
+            layer.confirm('是否确认还书？', {
+                btn: ['确认', '取消']
+            }, function () {
+                layer.load(2, { shade: false });
+                    $.post("/Manager/Borrow", ID, function (res) {
+                    setTimeout(function () {
+                        layer.closeAll('loading');
+                    }, 1000);
+                    if (res == "success") {
+                        layer.alert("还书成功！");
+                        setTimeout(function () {
+                            window.location.href = "/Manager/Borrow";
+                        }, 2500);
+                    };
+                });
+            });
+        };
+    </script>
+}

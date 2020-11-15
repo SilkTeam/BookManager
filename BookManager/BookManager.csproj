@@ -183,8 +183,6 @@
     <Content Include="Views\Shared\_Manager.cshtml" />
     <Content Include="Views\Manager\Sigin.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
-    <Content Include="Views\Borrow\Return.cshtml" />
-    <Content Include="Views\Borrow\Returnlogin.cshtml" />
     <Content Include="Views\Shared\_User.cshtml" />
     <Content Include="Views\Manager\User.cshtml" />
     <Content Include="Views\Manager\Book.cshtml" />
@@ -195,6 +193,8 @@
     <Content Include="Views\Manager\EditCategory.cshtml" />
     <Content Include="Views\Borrow\Index.cshtml" />
     <Content Include="Views\Home\Forget.cshtml" />
+    <Content Include="Views\Borrow\Lose.cshtml" />
+    <Content Include="Views\Manager\Borrow.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
