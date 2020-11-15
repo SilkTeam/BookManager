@@ -78,10 +78,13 @@ namespace BookManager.Controllers
           
         }
 
+        [HttpGet]
         public ActionResult Forget() {
             return View(); 
         }
-        public ActionResult Forgeting(string Name, string Phone, string Password)
+
+        [HttpPost]
+        public ActionResult Forget(string Name, string Phone, string Password)
         {
             var user = EF.User.FirstOrDefault(x => x.Name == Name && x.Phone == Phone);
             var sigin = EF.Sigin.FirstOrDefault(x => x.Username == Name);

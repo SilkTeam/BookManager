@@ -57,9 +57,9 @@
     <tr>
         <td>2</td>
         <td>忘记密码找回模块(挂失卡)</td>
-        <td></td>
-        <td></td>
-        <td>waiting...</td>
+        <td><a href="https://github.com/tengjinkai">tengjinkai</a></td>
+        <td>✔</td>
+        <td>100%</td>
     </tr>
     <tr>
         <td>3</td>
@@ -85,6 +85,13 @@
     <tr>
         <td>6</td>
         <td>限制可借阅的书籍数量、分类</td>
+        <td></td>
+        <td></td>
+        <td>waiting...</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>允许读者自行修改资料</td>
         <td></td>
         <td></td>
         <td>waiting...</td>
@@ -138,8 +145,8 @@
         <td>6</td>
         <td>图书借还模块</td>
         <td><a href="https://github.com/tengjinkai">tengjinkai</a></td>
-        <td></td>
-        <td>90%</td>
+        <td>✔</td>
+        <td>100%</td>
     </tr>
     <tr>
         <td>7</td>
@@ -159,8 +166,8 @@
         <td>9</td>
         <td>前端美化和Jquery优化</td>
         <td><a href="https://github.com/Skilemon">Skilemon</a></td>
-        <td></td>
-        <td>90%</td>
+        <td>✔</td>
+        <td>100%</td>
     </tr>
     <tr>
         <td>10</td>
