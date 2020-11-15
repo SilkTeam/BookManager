@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Forget";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+<h2>Forget</h2>
+<form action="/home/Forgeting" method="post" id="form1">
+    输入手机号：<input type="number" name="Pone" id="pone" />
+    新密码：<input type="password" name="possword" id="possword" />
+    确认密码：<input type="password" name="pwd2" id="pwd2" />
+    <input type="submit" value="提交" />
+</form>
+@section scripts{
+    <script>
+        $("#form1").submit(function () {
+            var data = {
+                pone: $("#pone").val(),
+                possword: $("#possword").val(),
+                pwd2: $("#pwd2").val(),
+            }
+            $.post("/home/Forgeting", data, function (res) {
+                layer.alert(res);
+                if (res == "修改成功") {
+                    layer.alert(res);
+                    window.location.href = "/Manager/Sigin";
+                }
+            })
+            return false;
+        });
+    </script>       
+    }

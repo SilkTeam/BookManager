@@ -67,7 +67,7 @@ namespace BookManager.Controllers
                 string bookName = "";
                 foreach (var item in mod)
                 {
-                    bookName = item.Bid + "\r\n";
+                   bookName = item.Bid + "\r\n";
                 }
                 return Content(bookName);
             }
@@ -75,6 +75,27 @@ namespace BookManager.Controllers
             {
                 return Content("你没有正在申请借阅的书籍");
             }
+          
+        }
+
+        public ActionResult Forget() {
+            return View(); 
+        }
+        public ActionResult Forgeting()
+        {
+            var pone = Request["pone"];
+            var pwd1 = Request["possword"];
+            var pwd2 = Request["pwd2"];
+            if(pwd1!=pwd2)
+             return Content("两次密码不一样");
+            var mod = EF.User.FirstOrDefault(x=>x.Phone==pone);
+            if(mod==null)
+                return Content("手机号错误");
+            var sigin = EF.Sigin.FirstOrDefault(x=>x.ID==mod.Uid);
+            sigin.Password = pwd1;
+            EF.SaveChanges();
+
+            return Content("修改成功");
         }
     }
 }
