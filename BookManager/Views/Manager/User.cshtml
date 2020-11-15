@@ -42,6 +42,7 @@
                 <td>@item.EntryTime</td>
                 <td>
                     <div class="btn-group">
+                        <a href="/Manager/Book?ID=@item.ID" class="btn btn-info" role="button">借阅</a>
                         <a href="/Manager/EditUser?ID=@item.ID" class="btn btn-warning" role="button">编辑</a>
                         <a href="#Delete" id="Delete" onclick="Delete(@item.ID)" class="btn btn-danger" role="button">删除</a>
                     </div>

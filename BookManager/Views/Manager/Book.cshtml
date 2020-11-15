@@ -31,6 +31,14 @@
                 <td>@item.Number</td>
                 <td>
                     <div class="btn-group">
+                        @if (Session["BorrowID"] != null)
+                        {
+                            <a href="/Borrow/Index?ID=@item.ID" class="btn btn-info" role="button">选中</a>
+                        }
+                        else
+                        {
+                            <input disabled class="btn btn-secondary" value="选中" title="请先选择需要借阅的用户" role="button" />
+                        }
                         <a href="/Manager/EditBook?ID=@item.ID" class="btn btn-warning" role="button">编辑</a>
                         <a href="#Delete" id="Delete" onclick="Delete(@item.ID)" class="btn btn-danger" role="button">删除</a>
                     </div>

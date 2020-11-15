@@ -16,6 +16,7 @@
         <AssociationConnector Association="BookManagerModel.FK__Borrow__CardID__2F10007B" ManuallyRouted="false" />
         <AssociationConnector Association="BookManagerModel.FK__Log__Uid__31EC6D26" ManuallyRouted="false" />
         <AssociationConnector Association="BookManagerModel.FK__User__Uid__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="BookManagerModel.FK__Log__Bid__32E0915F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

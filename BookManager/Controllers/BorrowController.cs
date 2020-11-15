@@ -20,11 +20,43 @@ namespace BookManager.Controllers
             }
         }
 
-        public ActionResult Borrow()
+        // 借阅信息详单生成
+        public ActionResult Index(int ID)
         {
-            var id = Convert.ToInt32(Request["id"]);
-            var mod = EF.Book.FirstOrDefault(x => x.ID == id);
-            return View(mod);
+            // 通过图书ID查找图书
+            ViewBag.BookInfo = EF.Book.FirstOrDefault(x => x.ID == ID);
+            // 通过用户ID查找用户
+            ViewBag.UserInfo = EF.User.FirstOrDefault(x => x.ID == Convert.ToInt32(Session["BorrowID"]));
+            return View();
+        }
+
+        public ActionResult Give(int UserID, int BookID, Borrow borrow, Log log)
+        {
+            // 通过图书ID查找图书
+            var book = EF.Book.FirstOrDefault(x => x.ID == BookID);
+            // 通过用户ID查找用户
+            var user = EF.User.FirstOrDefault(x => x.ID == UserID);
+            // 判断当前登录的用户
+            if (Convert.ToInt32(Session["Identity"]) < 1)
+            {
+                log.Uid = user.ID;
+                log.Bid = book.ID;
+                log.Info = "Send";
+                log.EntryTime = DateTime.Now;
+                EF.Log.Add(log);
+                EF.SaveChanges();
+                return Content("sendok");
+            }
+            else
+            {
+                borrow.BookID = book.ID;
+                borrow.CardID = user.ID;
+                borrow.Use = true;
+                borrow.GetTime = DateTime.Now;
+                EF.Borrow.Add(borrow);
+                EF.SaveChanges();
+                return Content("success");
+            }
         }
 
         //借书

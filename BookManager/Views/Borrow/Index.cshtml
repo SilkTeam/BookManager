@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    if (Convert.ToInt32(Session["Identity"]) < 1)
+    {
+        Layout = "~/Views/Shared/_User.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Manager.cshtml";
+    }
+    var user = ViewBag.UserInfo as BookManager.Models.User;
+    var book = ViewBag.BookInfo as BookManager.Models.Book;
+}
+<h2>确认借阅信息</h2>
+<form action="/Borrow/Give" method="post">
+    <div class="form-group">
+        <label>书名:</label>
+        <input type="text" class="form-control" disabled value="@book.Name">
+    </div>
+    <div class="form-group">
+        <label>封面:</label>
+        <input type="file" class="form-control" disabled value="@book.Img">
+    </div>
+    <div class="form-group">
+        <label>介绍:</label>
+        <textarea type="text" class="form-control" disabled value="@book.Description" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+        <label>分类:</label>
+        <input type="file" class="form-control" disabled value="@book.Category1.Name">
+    </div>
+    <div class="form-group">
+        <label>作者:</label>
+        <input type="text" class="form-control" disabled value="@book.Author">
+    </div>
+    <hr />
+    <div class="form-group">
+        <label>读者(借阅人):</label>
+        <input type="text" class="form-control" disabled value="@user.Name">
+    </div>
+    <div class="form-group">
+        <label>读者卡号(借阅卡):</label>
+        <input type="number" class="form-control" disabled value="@user.ID">
+    </div>
+    <input type="hidden" class="form-control" value="@user.ID" id="UserID">
+    <input type="hidden" class="form-control" value="@book.ID" id="BookID">
+    <button id="submit" class="btn btn-primary">借阅书籍</button>
+</form>
+@section scripts{
+    <script>
+        $("#submit").click(function () {
+            layer.load(2, { shade: false });
+            var data = {
+                UserID: $("#UserID").val(),
+                BookID: $("#BookID").val(),
+            };
+            $.post("/Borrow/Give", data, function (res) {
+                setTimeout(function () {
+                    layer.closeAll('loading');
+                }, 1000);
+                if (res == "success") {
+                    layer.alert("借阅成功！");
+                    setTimeout(function () {
+                        window.location.href = "/Manager/Index";
+                    }, 1500);
+                } else if (res == "sendok") {
+                    layer.alert("已提交申请借阅，请等待管理员同意！");
+                    setTimeout(function () {
+                        window.location.href = "/Home/Index";
+                    }, 1500);
+                } else {
+                    layer.alert(res);
+                };
+            });
+            return false;
+        });
+    </script>
+}

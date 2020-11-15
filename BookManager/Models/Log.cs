@@ -18,7 +18,9 @@ namespace BookManager.Models
         public Nullable<int> Uid { get; set; }
         public string Info { get; set; }
         public Nullable<System.DateTime> EntryTime { get; set; }
+        public Nullable<int> Bid { get; set; }
     
         public virtual User User { get; set; }
+        public virtual Book Book { get; set; }
     }
 }

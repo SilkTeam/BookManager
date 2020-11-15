@@ -153,8 +153,11 @@ namespace BookManager.Controllers
             }
         }
 
-        public ActionResult Book(int page = 1, int size = 10)
+        public ActionResult Book(int ID, int page = 1, int size = 10)
         {
+            if (ID > 0)
+                Session["BorrowID"] = ID;
+
             var count = EF.Book.Count();
             var pageCount = count / size;
 

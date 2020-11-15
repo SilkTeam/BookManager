@@ -18,6 +18,14 @@
         </select>
     </div>
     <div class="form-group">
+        <label>密码:</label>
+        <input type="password" class="form-control" id="Password" name="Password">
+    </div>
+    <div class="form-group">
+        <label>确认密码:</label>
+        <input type="password" class="form-control" id="PWD">
+    </div>
+    <div class="form-group">
         <label>年龄:</label>
         <input type="number" class="form-control" id="Age" name="Age">
     </div>
@@ -30,26 +38,30 @@
 @section scripts{
     <script>
         $("#submit").click(function () {
-            layer.load(2, { shade: false });
-            var data = {
-                Name: $("#Name").val(),
-                Age: $("#Age").val(),
-                Sex: $("#Sex").val(),
-                Phone: $("#Phone").val(),
-            };
-            $.post("/Home/Register", data, function (res) {
-                setTimeout(function () {
-                    layer.closeAll('loading');
-                }, 1000);
-                if (res == "success") {
-                    layer.alert("注册成功！");
-                    setTimeout(function () {
-                        window.location.href = "/Home/Index";
-                    }, 1500);
-                } else {
-                    layer.alert(res);
+            if ($("#Password").val() == $("#PWD").val()) {
+                layer.load(2, { shade: false });
+                var data = {
+                    Name: $("#Name").val(),
+                    Age: $("#Age").val(),
+                    Sex: $("#Sex").val(),
+                    Phone: $("#Phone").val(),
                 };
-            });
+                $.post("/Home/Register", data, function (res) {
+                    setTimeout(function () {
+                        layer.closeAll('loading');
+                    }, 1000);
+                    if (res == "success") {
+                        layer.alert("注册成功！");
+                        setTimeout(function () {
+                            window.location.href = "/Home/Index";
+                        }, 1500);
+                    } else {
+                        layer.alert(res);
+                    };
+                });
+            } else {
+                layer.alert("两次输入的密码不一致");
+            }
             return false;
         });
     </script>

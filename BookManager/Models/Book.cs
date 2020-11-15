@@ -18,6 +18,7 @@ namespace BookManager.Models
         public Book()
         {
             this.Borrow = new HashSet<Borrow>();
+            this.Log = new HashSet<Log>();
         }
     
         public int ID { get; set; }
@@ -32,5 +33,7 @@ namespace BookManager.Models
         public virtual Category Category1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Borrow> Borrow { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Log> Log { get; set; }
     }
 }

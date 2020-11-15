@@ -194,6 +194,7 @@
     <Content Include="Views\Manager\EditBook.cshtml" />
     <Content Include="Views\Manager\AddCategory.cshtml" />
     <Content Include="Views\Manager\EditCategory.cshtml" />
+    <Content Include="Views\Borrow\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

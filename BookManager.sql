@@ -66,6 +66,7 @@ Create Table [Log]
 (
 	ID int primary key identity(1,1),
 	[Uid] int foreign key references [User](ID),
+	Bid int foreign key references Book(ID),
 	Info text not null,
 	EntryTime datetime,
 )
