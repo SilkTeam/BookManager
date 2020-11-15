@@ -20,9 +20,9 @@ namespace BookManager.Controllers
             }
         }
 
-        public ActionResult Index()
+        public ActionResult Index( int siz=10)
         {
-            ViewBag.list = EF.Book.ToList();
+            ViewBag.list = EF.Book.Take(siz).ToList();
             return View();
         }
 
@@ -98,6 +98,11 @@ namespace BookManager.Controllers
             {
                 return Content("手机号验证失败");
             }
+        }
+        public ActionResult List()
+        {
+            ViewBag.list = EF.Book.ToList();
+            return View();
         }
     }
 }

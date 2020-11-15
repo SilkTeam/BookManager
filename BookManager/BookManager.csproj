@@ -195,6 +195,7 @@
     <Content Include="Views\Home\Forget.cshtml" />
     <Content Include="Views\Borrow\Lose.cshtml" />
     <Content Include="Views\Manager\Borrow.cshtml" />
+    <Content Include="Views\Home\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
