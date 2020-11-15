@@ -16,11 +16,11 @@ namespace BookManager.Models
     {
         public int ID { get; set; }
         public Nullable<int> Uid { get; set; }
+        public Nullable<int> Bid { get; set; }
         public string Info { get; set; }
         public Nullable<System.DateTime> EntryTime { get; set; }
-        public Nullable<int> Bid { get; set; }
     
-        public virtual User User { get; set; }
         public virtual Book Book { get; set; }
+        public virtual User User { get; set; }
     }
 }

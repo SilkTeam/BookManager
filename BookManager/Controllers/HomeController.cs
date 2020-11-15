@@ -81,21 +81,20 @@ namespace BookManager.Controllers
         public ActionResult Forget() {
             return View(); 
         }
-        public ActionResult Forgeting()
+        public ActionResult Forgeting(string Name, string Phone, string Password)
         {
-            var pone = Request["pone"];
-            var pwd1 = Request["possword"];
-            var pwd2 = Request["pwd2"];
-            if(pwd1!=pwd2)
-             return Content("两次密码不一样");
-            var mod = EF.User.FirstOrDefault(x=>x.Phone==pone);
-            if(mod==null)
-                return Content("手机号错误");
-            var sigin = EF.Sigin.FirstOrDefault(x=>x.ID==mod.Uid);
-            sigin.Password = pwd1;
-            EF.SaveChanges();
-
-            return Content("修改成功");
+            var user = EF.User.FirstOrDefault(x => x.Name == Name && x.Phone == Phone);
+            var sigin = EF.Sigin.FirstOrDefault(x => x.Username == Name);
+            if (user != null)
+            {
+                sigin.Password = Password;
+                EF.SaveChanges();
+                return Content("success");
+            }
+            else
+            {
+                return Content("手机号验证失败");
+            }
         }
     }
 }

@@ -1,32 +1,60 @@
 ﻿
 @{
     ViewBag.Title = "Forget";
-    Layout = "~/Views/Shared/_User.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Forget</h2>
-<form action="/home/Forgeting" method="post" id="form1">
-    输入手机号：<input type="number" name="Pone" id="pone" />
-    新密码：<input type="password" name="possword" id="possword" />
-    确认密码：<input type="password" name="pwd2" id="pwd2" />
-    <input type="submit" value="提交" />
+<h2>忘记密码</h2>
+<form action="/Home/Forget" method="post">
+    @*<div class="form-group">
+        <label>卡号:</label>
+        <input type="text" class="form-control" id="Name" name="Name">
+    </div>*@
+    <div class="form-group">
+        <label>姓名:</label>
+        <input type="text" class="form-control" id="Name" name="Name">
+    </div>
+    <div class="form-group">
+        <label>联系方式:</label>
+        <input type="text" class="form-control" id="Phone" name="Phone">
+    </div>
+    <div class="form-group">
+        <label>密码:</label>
+        <input type="password" class="form-control" id="Password" name="Password">
+    </div>
+    <div class="form-group">
+        <label>确认密码:</label>
+        <input type="password" class="form-control" id="PWD">
+    </div>
+    <button id="submit" class="btn btn-primary">注册</button>
 </form>
 @section scripts{
     <script>
-        $("#form1").submit(function () {
-            var data = {
-                pone: $("#pone").val(),
-                possword: $("#possword").val(),
-                pwd2: $("#pwd2").val(),
+        $("#submit").click(function () {
+            if ($("#Password").val() == $("#PWD").val()) {
+                layer.load(2, { shade: false });
+                var data = {
+                    Name: $("#Name").val(),
+                    Phone: $("#Phone").val(),
+                    Password: $("#Password").val(),
+                };
+                $.post("/Home/Forget", data, function (res) {
+                    setTimeout(function () {
+                        layer.closeAll('loading');
+                    }, 1000);
+                    if (res == "success") {
+                        layer.alert("修改新密码成功！");
+                        setTimeout(function () {
+                            window.location.href = "/Home/Index";
+                        }, 1500);
+                    } else {
+                        layer.alert(res);
+                    };
+                });
+            } else {
+                layer.alert("两次输入的密码不一致");
             }
-            $.post("/home/Forgeting", data, function (res) {
-                layer.alert(res);
-                if (res == "修改成功") {
-                    layer.alert(res);
-                    window.location.href = "/Manager/Sigin";
-                }
-            })
             return false;
         });
     </script>       
-    }
+}

@@ -3,7 +3,6 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/login.css" rel="stylesheet" />
 <h2>登录</h2>
 <form>
     <div class="form-group">
@@ -14,7 +13,10 @@
         <label>密码:</label>
         <input type="password" class="form-control" id="Password" name="Password" value="">
     </div>
-    <button id="submit" class="btn btn-primary a1">登录</button><a href="/home/Forget" class="btn btn-primary a1">忘记密码</a>
+    <div class="btn-group">
+        <button id="submit" class="btn btn-primary">登录</button>
+        <a href="/Home/Forget" class="btn btn-info">忘记密码</a>
+    </div>
 </form>
 @section scripts{
     <script>

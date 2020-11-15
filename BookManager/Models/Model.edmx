@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BookManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BookManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="ID" />
@@ -171,7 +171,8 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BookManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -189,7 +190,7 @@
           <Property Name="EntryTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Category1" Relationship="Self.FK__Book__Category__2B3F6F97" FromRole="Book" ToRole="Category" />
           <NavigationProperty Name="Borrow" Relationship="Self.FK__Borrow__BookID__2E1BDC42" FromRole="Book" ToRole="Borrow" />
-          <NavigationProperty Name="Log" Relationship="BookManagerModel.FK__Log__Bid__32E0915F" FromRole="Book" ToRole="Log" />
+          <NavigationProperty Name="Log" Relationship="Self.FK__Log__Bid__32E0915F" FromRole="Book" ToRole="Log" />
         </EntityType>
         <EntityType Name="Borrow">
           <Key>
@@ -218,11 +219,11 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Uid" Type="Int32" />
+          <Property Name="Bid" Type="Int32" />
           <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EntryTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Book" Relationship="Self.FK__Log__Bid__32E0915F" FromRole="Log" ToRole="Book" />
           <NavigationProperty Name="User" Relationship="Self.FK__Log__Uid__31EC6D26" FromRole="Log" ToRole="User" />
-          <Property Name="Bid" Type="Int32" />
-          <NavigationProperty Name="Book" Relationship="BookManagerModel.FK__Log__Bid__32E0915F" FromRole="Log" ToRole="Book" />
         </EntityType>
         <EntityType Name="Sigin">
           <Key>
@@ -270,6 +271,18 @@
             </Principal>
             <Dependent Role="Borrow">
               <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Log__Bid__32E0915F">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="Bid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -324,6 +337,10 @@
             <End Role="Book" EntitySet="Book" />
             <End Role="Borrow" EntitySet="Borrow" />
           </AssociationSet>
+          <AssociationSet Name="FK__Log__Bid__32E0915F" Association="Self.FK__Log__Bid__32E0915F">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
           <AssociationSet Name="FK__Borrow__CardID__2F10007B" Association="Self.FK__Borrow__CardID__2F10007B">
             <End Role="User" EntitySet="User" />
             <End Role="Borrow" EntitySet="Borrow" />
@@ -336,23 +353,7 @@
             <End Role="Sigin" EntitySet="Sigin" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK__Log__Bid__32E0915F" Association="BookManagerModel.FK__Log__Bid__32E0915F">
-            <End Role="Book" EntitySet="Book" />
-            <End Role="Log" EntitySet="Log" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK__Log__Bid__32E0915F">
-          <End Type="BookManagerModel.Book" Role="Book" Multiplicity="0..1" />
-          <End Type="BookManagerModel.Log" Role="Log" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Book">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Log">
-              <PropertyRef Name="Bid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -396,9 +397,9 @@
           <EntitySetMapping Name="Log">
             <EntityTypeMapping TypeName="BookManagerModel.Log">
               <MappingFragment StoreEntitySet="Log">
-                <ScalarProperty Name="Bid" ColumnName="Bid" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Uid" ColumnName="Uid" />
+                <ScalarProperty Name="Bid" ColumnName="Bid" />
                 <ScalarProperty Name="Info" ColumnName="Info" />
                 <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
               </MappingFragment>
