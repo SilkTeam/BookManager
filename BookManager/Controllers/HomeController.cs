@@ -20,7 +20,7 @@ namespace BookManager.Controllers
             }
         }
 
-        public ActionResult Index( int siz=10)
+        public ActionResult Index(int siz=10)
         {
             ViewBag.list = EF.Book.Take(siz).ToList();
             return View();
@@ -45,7 +45,7 @@ namespace BookManager.Controllers
             else
             {
                 sigin.Username = user.Name;
-                //sigin.Password = "123456";
+                //sigin.Password = sigin.Password;
                 sigin.Identity = 0;
                 EF.Sigin.Add(sigin);
                 EF.SaveChanges();
@@ -58,16 +58,18 @@ namespace BookManager.Controllers
         }
 
         [Auth]
+        [HttpPost]
         public ActionResult Send()
         {
-            var user = Session["User"] as User;
-            var mod = EF.Log.Where(x => x.Uid == user.ID && x.Info == "Send");
+            var ID = Convert.ToInt32(Session["BorrowID"]);
+            //var data = "Send";
+            var mod = EF.Log.Where(x => x.Uid == ID && x.Info.IndexOf("Send1") > -1);
             if (mod.Count() > 0)
             {
                 string bookName = "";
                 foreach (var item in mod)
                 {
-                   bookName = item.Bid + "\r\n";
+                   bookName = item.Book.Name + "\r\n";
                 }
                 return Content(bookName);
             }
@@ -75,7 +77,6 @@ namespace BookManager.Controllers
             {
                 return Content("你没有正在申请借阅的书籍");
             }
-          
         }
 
         [HttpGet]
@@ -99,6 +100,7 @@ namespace BookManager.Controllers
                 return Content("手机号验证失败");
             }
         }
+
         public ActionResult List()
         {
             ViewBag.list = EF.Book.ToList();

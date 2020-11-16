@@ -10,7 +10,9 @@
             <th>书名</th>
             <th>借阅人</th>
             <th>借阅时间</th>
+            <th>还书时间</th>
             <th>当前状态</th>
+            <th>操作</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +22,7 @@
                 <td>@item.Book.Name</td>
                 <td>@item.User.Name</td>
                 <td>@item.GetTime</td>
+                <td>@item.LoseTime</td>
                 <td>
                     @if (item.Use)
                     {
@@ -31,7 +34,14 @@
                     }
                 </td>
                 <td>
-                    <a href="#Borrow" id="Borrow" onclick="Borrow(@item.ID)" class="btn btn-danger" role="button">还书</a>
+                    @if (item.Use)
+                    {
+                        <a href="#Lose" id="Lose" onclick="Lose(@item.ID)" class="btn btn-danger" role="button">还书</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-secondary" role="button">已还</a>
+                    }
                 </td>
             </tr>
         }
@@ -87,20 +97,23 @@
             }, 350);
             return false;
         });
-        function Lose(ID) {
+        function Borrow(id) {
             layer.confirm('是否确认还书？', {
                 btn: ['确认', '取消']
             }, function () {
+                    var date = {
+                        ID: id,
+                    }
                 layer.load(2, { shade: false });
-                    $.post("/Manager/Borrow", ID, function (res) {
+                    $.post("/Manager/Borrow", date, function (res) {
                     setTimeout(function () {
                         layer.closeAll('loading');
-                    }, 1000);
+                    }, 300);
                     if (res == "success") {
                         layer.alert("还书成功！");
                         setTimeout(function () {
                             window.location.href = "/Manager/Borrow";
-                        }, 2500);
+                        }, 1500);
                     };
                 });
             });

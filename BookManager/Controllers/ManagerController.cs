@@ -57,6 +57,7 @@ namespace BookManager.Controllers
                 Session["Identity"] = mod.Identity;
                 if (mod.Identity < 1)
                 {
+                    Session["BorrowID"] = mod.ID;
                     return Content("user");
                 }
                 else
@@ -157,10 +158,17 @@ namespace BookManager.Controllers
             }
         }
 
-        public ActionResult Book(int ID, int page = 1, int size = 10)
+        public ActionResult Book(int page = 1, int size = 10)
         {
+            int ID = Convert.ToInt32(Request["ID"]);
             if (ID > 0)
+            {
                 Session["BorrowID"] = ID;
+            }
+            else
+            {
+                Session["BorrowID"] = null;
+            }
 
             var count = EF.Book.Count();
             var pageCount = count / size;
@@ -327,7 +335,7 @@ namespace BookManager.Controllers
         {
             EF.Category.Add(category);
             EF.SaveChanges();
-            return Redirect("/Manager/Book");
+            return Content("success");
         }
 
         [HttpGet]
@@ -350,7 +358,7 @@ namespace BookManager.Controllers
             var mod = EF.Category.FirstOrDefault(x => x.ID == category.ID);
             mod = category;
             EF.SaveChanges();
-            return Redirect("/Manager/Book");
+            return Content("success");
         }
 
         public ActionResult DelCategory(int ID)
@@ -369,11 +377,11 @@ namespace BookManager.Controllers
             }
         }
 
+        [AllowAnonymous]
         public ActionResult Logout()
         {
             Session["User"] = Session["Identity"] = null;
             return Content("success");
-            ;
         }
 
         [HttpGet]
@@ -387,11 +395,42 @@ namespace BookManager.Controllers
         public ActionResult Borrow(int ID)
         {
             //var user = Session["User"] as User;
-            var mod = EF.Borrow.FirstOrDefault(x => x.ID == ID && x.Use == true);
+            var mod = EF.Borrow.FirstOrDefault(x => x.ID == ID);
             if (mod != null)
             {
                 mod.Use = false;
                 mod.LoseTime = DateTime.Now;
+                EF.SaveChanges();
+                return Content("success");
+            }
+            else
+            {
+                return Content("越权操作！");
+            }
+        }
+
+        // 图书归还:User
+        [HttpGet]
+        public ActionResult Send()
+        {
+            //var ID = Convert.ToInt32(Session["BorrowID"]);
+            var list = EF.Log.Where(x => x.Info.IndexOf("Send1") > -1).ToList();
+            if (list != null)
+            {
+                return View(list);
+            }
+            return View();
+        }
+
+        // 图书归还:User
+        [HttpPost]
+        public ActionResult Send(int ID)
+        {
+            //var user = Session["User"] as User;
+            var mod = EF.Log.FirstOrDefault(x => x.ID == ID && x.Info.IndexOf("Send1") > -1);
+            if (mod != null)
+            {
+                mod.Info = "sendok";
                 EF.SaveChanges();
                 return Content("success");
             }

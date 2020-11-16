@@ -24,14 +24,14 @@
                     <a class="nav-link" href="/Home/List?Cate=true">图书分类</a>
                 </li>*@
                 <li class="nav-item">
-                    <a class="nav-link" href="/Home/Lose">图书归还</a>
+                    <a class="nav-link" href="/Borrow/Lose">图书归还</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#Send" id="Send">我的申请</a>
                 </li>
-                <li class="nav-item">
+                @*<li class="nav-item">
                     <a class="nav-link" href="/Home/Profile">个人信息</a>
-                </li>
+                </li>*@
                 <li class="nav-item">
                     <a class="nav-link" href="#Logout" id="Logout">退出登录</a>
                 </li>
@@ -65,13 +65,15 @@
                         setTimeout(function () {
                             window.location.href = "/Manager/Sigin";
                         }, 1500);
+                    } else {
+                        layer.alert(res);
                     };
                 });
             });
         });
         $("#Send").click(function () {
             layer.load(2, { shade: false });
-            $.get("/Home/Send", function (res) {
+            $.post("/Home/Send", function (res) {
                 setTimeout(function () {
                     layer.closeAll('loading');
                 }, 300);

@@ -23,7 +23,15 @@
         {
             <tr>
                 <td>@item.ID</td>
-                <td>@item.Img</td>
+                <td>
+                    @if (@item.Img != null)
+                    {
+                        <img src="@item.Img" /> }
+                    else
+                    {
+                        <img src="~/Upload/Default.jpg" />
+                    }
+                </td>
                 <td>@item.Name</td>
                 <td>@item.Description</td>
                 <td>@item.Category1.Name</td>
@@ -37,7 +45,7 @@
                         }
                         else
                         {
-                            <input disabled class="btn btn-secondary" value="选中" title="请先选择需要借阅的用户" role="button" />
+                            <input class="btn btn-secondary" value="选中" title="请先选择需要借阅的用户" role="button" />
                         }
                         <a href="/Manager/EditBook?ID=@item.ID" class="btn btn-warning" role="button">编辑</a>
                         <a href="#Delete" id="Delete" onclick="Delete(@item.ID)" class="btn btn-danger" role="button">删除</a>

@@ -26,7 +26,8 @@ namespace BookManager.Controllers
             // 通过图书ID查找图书
             ViewBag.BookInfo = EF.Book.FirstOrDefault(x => x.ID == ID);
             // 通过用户ID查找用户
-            ViewBag.UserInfo = EF.User.FirstOrDefault(x => x.ID == Convert.ToInt32(Session["BorrowID"]));
+            var Bid = Convert.ToInt32(Session["BorrowID"]);
+            ViewBag.UserInfo = EF.User.FirstOrDefault(x => x.ID == Bid);
             return View();
         }
 
@@ -42,7 +43,7 @@ namespace BookManager.Controllers
             {
                 log.Uid = user.ID;
                 log.Bid = book.ID;
-                log.Info = "Send";
+                log.Info = "Send1";
                 log.EntryTime = DateTime.Now;
                 EF.Log.Add(log);
                 EF.SaveChanges();
@@ -64,16 +65,21 @@ namespace BookManager.Controllers
         [HttpGet]
         public ActionResult Lose()
         {
-            var mod = Session["User"] as User;
-            return View(EF.Borrow.Where(x => x.CardID == mod.ID && x.Use == true).ToList());
+            var ID = Convert.ToInt32(Session["BorrowID"]);
+            var list = EF.Borrow.Where(x => x.CardID == ID && x.Use == true).ToList();
+            if (list != null)
+            {
+                return View(list);
+            }
+            return View();
         }
 
         // 图书归还:User
         [HttpPost]
         public ActionResult Lose(int ID)
         {
-            var user = Session["User"] as User;
-            var mod = EF.Borrow.FirstOrDefault(x=>x.ID == ID && x.CardID == user.ID && x.Use == true);
+            var uID = Convert.ToInt32(Session["BorrowID"]);
+            var mod = EF.Borrow.FirstOrDefault(x=>x.ID == ID && x.CardID == uID && x.Use == true);
             if (mod != null)
             {
                 mod.Use = false;

@@ -6,6 +6,7 @@
 }
 <h2>EditBook</h2>
 <form action="/Manager/EditBook" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="ID" value="@Model.ID" />
     <div class="form-group">
         <label>书名:</label>
         <input type="text" class="form-control" value="@Model.Name" name="Name" placeholder="书名">

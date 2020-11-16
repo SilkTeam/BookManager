@@ -1,14 +1,16 @@
-﻿@model IEnumerable<BookManager.Models.Borrow>
+﻿@model IEnumerable<BookManager.Models.Log>
 @{
-    ViewBag.Title = "Lose";
-    Layout = "~/Views/Shared/_User.cshtml";
+    ViewBag.Title = "Send";
+    Layout = "~/Views/Shared/_Manager.cshtml";
 }
-<h2>还书</h2>
+<h2>Send</h2>
 <table class="table table-hover">
     <thead>
         <tr>
+            <th>编号</th>
             <th>书名</th>
-            <th>借阅时间</th>
+            <th>借阅人</th>
+            <th>申请时间</th>
             <th>当前状态</th>
             <th>操作</th>
         </tr>
@@ -17,27 +19,13 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>@item.ID</td>
                 <td>@item.Book.Name</td>
-                <td>@item.GetTime</td>
+                <td>@item.User.Name</td>
+                <td>@item.EntryTime</td>
+                <td>未同意</td>
                 <td>
-                    @if (item.Use)
-                    {
-                        @:未还书
-                    }
-                    else
-                    {
-                        @:已还书
-                    }
-                </td>
-                <td>
-                    @if (item.Use)
-                    {
-                        <a href="#Lose" id="Lose" onclick="Lose(@item.ID)" class="btn btn-danger" role="button">还书</a>
-                    }
-                    else
-                    {
-                        <a class="btn btn-secondary" role="button">已还</a>
-                    }
+                    <a href="#Send" id="Send" onclick="Send(@item.ID)" class="btn btn-danger" role="button">同意申请</a>
                 </td>
             </tr>
         }
@@ -55,13 +43,13 @@
             else
             {
                 <li class="page-item">
-                    <a class="page-link" href="/Home/Lose?page=1">首页</a>
+                    <a class="page-link" href="/Manager/Send?page=1">首页</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="/Home/Lose?page=@(ViewBag.page - 1)">上页</a>
+                    <a class="page-link" href="/Manager/Send?page=@(ViewBag.page - 1)">上页</a>
                 </li>
             }
-            <li class="page-item"><a class="page-link" href="/Home/Lose?page=@(ViewBag.page)">@(ViewBag.page)</a></li>
+            <li class="page-item"><a class="page-link" href="/Manager/Send?page=@(ViewBag.page)">@(ViewBag.page)</a></li>
             @if (ViewBag.page == ViewBag.pageCount)
             {
                 <li class="page-item disabled">
@@ -71,10 +59,10 @@
             else
             {
                 <li class="page-item">
-                    <a class="page-link" href="/Home/Lose?page=@(ViewBag.page + 1)">下页</a>
+                    <a class="page-link" href="/Manager/Send?page=@(ViewBag.page + 1)">下页</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="/Home/Lose?page=@(ViewBag.pageCount)">尾页</a>
+                    <a class="page-link" href="/Manager/Send?page=@(ViewBag.pageCount)">尾页</a>
                 </li>
             }
             <div class="col-3 btn-group">
@@ -89,24 +77,29 @@
         $("#junpPage").click(function () {
             layer.load(2, { shade: false });
             setTimeout(function () {
-                window.location.href = "/Home/Lose?page=" + $("#PageJ").val();
+                window.location.href = "/Manager/Send?page=" + $("#PageJ").val();
             }, 350);
             return false;
         });
-        function Lose(ID) {
-            layer.confirm('是否确认还书？', {
+        function Send(id) {
+            layer.confirm('是否同意申请？', {
                 btn: ['确认', '取消']
             }, function () {
+                    var data = {
+                        ID: id,
+                    };
                 layer.load(2, { shade: false });
-                $.post("/Home/Lose", ID, function (res) {
+                $.post("/Manager/Send", data, function (res) {
                     setTimeout(function () {
                         layer.closeAll('loading');
                     }, 1000);
                     if (res == "success") {
                         layer.alert("还书成功！");
                         setTimeout(function () {
-                            window.location.href = "/Home/Lose";
+                            window.location.href = "/Manager/Send";
                         }, 2500);
+                    } else {
+                        layer.alert(res);
                     };
                 });
             });

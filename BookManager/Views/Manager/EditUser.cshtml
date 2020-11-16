@@ -6,6 +6,7 @@
 }
 <h2>更新借阅卡</h2>
 <form action="/Manager/EditUser" method="post">
+    <input type="hidden" name="ID" value="@Model.ID" />
     <div class="form-group">
         <label>姓名:</label>
         <input type="text" disabled class="form-control" id="Name" name="Name" value="@Model.Name">
@@ -26,6 +27,10 @@
         <label>联系方式:</label>
         <input type="tel" class="form-control" id="Phone" name="Phone" value="@Model.Phone">
     </div>
+    <div class="form-group">
+        <label>密码:</label>
+        <input type="password" class="form-control" id="Password" name="Password" value="@Model.Phone">
+    </div>
     <button id="submit" class="btn btn-primary">更新信息</button>
 </form>
 @section scripts{
@@ -37,6 +42,7 @@
                 Age: $("#Age").val(),
                 Sex: $("#Sex").val(),
                 Phone: $("#Phone").val(),
+                Password: $("#Password").val(),
             };
             $.post("/Manager/EditUser", data, function (res) {
                 setTimeout(function () {
